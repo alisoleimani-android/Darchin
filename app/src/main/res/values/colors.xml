@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f0f0f0</color>
+    <color name="colorPrimaryDark">#4e4e4e</color>
+    <color name="colorPrimaryLight">#ffffff</color>
+    <color name="colorSecondary">#ff1744</color>
+    <color name="colorSecondaryDark">#c4001d</color>
+    <color name="colorSecondaryLight">#ff616f</color>
+    <color name="colorAccent">#ff1744</color>
+    <color name="primaryText">#212121</color>
+    <color name="secondaryText">#757575</color>
+    <color name="order_sum_total">#757575</color>
+    <color name="comment_product">#9c9c9c</color>
+    <color name="textOnSecondary">#ffffff</color>
+    <color name="textOnPrimary">#000000</color>
+    <color name="text">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="fragment_bk_color">#f8f8ff</color>
+    <color name="info">#17A2B8</color>
+    <color name="success">#28A745</color>
+    <color name="alert">#FFC107</color>
+    <color name="failure">#DC3545</color>
+    <color name="semi_white">#bcc1c4</color>
+    <color name="notification_cv_bk">#f9f6c7</color>
+    <color name="score">#05a42f</color>
+    <color name="discount">#FCB913</color>
+    <color name="stars">#FCB913</color>
+    <color name="riv_border_color">#c5c5c5</color>
+    <color name="discount_text_view">#f20104</color>
+    <color name="scrollbar_track_color">@android:color/transparent</color>
+    <color name="online_circle">#24ff02</color>
+    <color name="pre_order_circle">#ff8001</color>
+    <color name="default_color">#E9ECEF</color>
+
+</resources>

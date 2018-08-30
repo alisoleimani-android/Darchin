@@ -1,0 +1,78 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.tinab.darchin.controller.fragment.user.order.SelectPhotoFragment">
+
+    <include
+        android:id="@+id/container_toolbar"
+        layout="@layout/toolbar_simple_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_below="@id/container_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="32dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+        <co.tinab.darchin.view.toolbox.TextViewLight
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/primaryText"
+            android:textDirection="locale"
+            android:textSize="@dimen/very_large"
+            android:text="@string/upload_photo_info"/>
+        <LinearLayout
+            android:id="@+id/btn_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/setting_btn_bk"
+            android:minHeight="120dp"
+            android:gravity="center"
+            android:layout_marginTop="32dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_photo_library_40dp"
+                android:tint="@color/colorAccent"
+                android:contentDescription="@drawable/ic_photo_library_40dp" />
+            <co.tinab.darchin.view.toolbox.TextViewLight
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/large"
+                android:text="@string/choose_photo_from_gallery"
+                android:textColor="@color/secondaryText"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/btn_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/setting_btn_bk"
+            android:minHeight="120dp"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_camera_40dp"
+                android:tint="@color/colorAccent"
+                android:contentDescription="@drawable/ic_camera_40dp" />
+            <co.tinab.darchin.view.toolbox.TextViewLight
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/large"
+                android:text="@string/take_photo_of_food_by_camera"
+                android:textColor="@color/secondaryText"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

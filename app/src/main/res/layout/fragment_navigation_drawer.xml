@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white">
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/container_nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="120dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorSecondary"
+        android:paddingTop="20dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp">
+        <co.tinab.darchin.view.toolbox.TextViewNormal
+            android:id="@+id/txt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/textOnSecondary"
+            android:layout_marginTop="5dp"
+            android:gravity="start|center_vertical"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/semi_large"/>
+        <LinearLayout
+            android:id="@+id/container_credit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/txt_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_name"
+            android:layout_marginTop="8dp"
+            android:gravity="start|center_vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/ic_credit_24dp"
+                android:tint="@color/textOnSecondary"
+                tools:ignore="ContentDescription" />
+            <co.tinab.darchin.view.toolbox.MoneyTextView
+                android:id="@+id/txt_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:textAlignment="viewStart"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="8dp"
+                android:textSize="@dimen/average"
+                android:textColor="@color/textOnSecondary" />
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+    <co.tinab.darchin.view.toolbox.MyRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/container_nav_header" />
+</RelativeLayout>

@@ -1,0 +1,139 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.tinab.darchin.controller.fragment.order.DeliveryTypeFragment">
+
+    <include
+        android:id="@+id/container_toolbar"
+        layout="@layout/toolbar_simple_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/container_toolbar"
+        android:layout_above="@id/container_info">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/container_take_ways"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/setting_btn_bk"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="@dimen/container_start_gap"
+                android:layout_marginEnd="@dimen/container_end_gap"
+                android:padding="8dp">
+                <co.tinab.darchin.view.toolbox.TextViewNormal
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textDirection="locale"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/very_large"
+                    android:text="@string/how_to_deliver_order" />
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
+                    android:gravity="start|center_vertical">
+                    <RadioButton
+                        android:id="@+id/btn_radio_delivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/MyRadioButton"
+                        android:checked="true"
+                        android:textSize="@dimen/semi_large"
+                        android:textColor="@color/primaryText"
+                        android:textDirection="locale"
+                        android:text="@string/delivery_with_courier" />
+                    <RadioButton
+                        android:id="@+id/btn_radio_serve_inside"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/MyRadioButton"
+                        android:layout_marginTop="4dp"
+                        android:textSize="@dimen/semi_large"
+                        android:textColor="@color/primaryText"
+                        android:textDirection="locale"
+                        android:text="@string/in_person_delivery" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <co.tinab.darchin.view.toolbox.ButtonNormal
+                android:id="@+id/btn_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/container_take_ways"
+                android:minHeight="@dimen/field_min_height"
+                android:background="@drawable/setting_btn_bk"
+                android:text="@string/choose_time"
+                android:textColor="@color/primaryText"
+                android:textDirection="locale"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="@dimen/container_end_gap"
+                android:layout_marginStart="@dimen/container_start_gap"/>
+
+            <LinearLayout
+                android:id="@+id/container_discount_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_time"
+                android:minHeight="@dimen/field_min_height"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="@dimen/container_end_gap"
+                android:layout_marginStart="@dimen/container_start_gap"
+                android:background="@drawable/setting_btn_bk">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:layout_gravity="start|center_vertical"
+                    android:src="@drawable/ic_gift_credit_24dp"
+                    android:tint="@color/colorAccent"
+                    android:contentDescription="@drawable/ic_gift_credit_24dp" />
+                <co.tinab.darchin.view.toolbox.EditTextNormal
+                    android:id="@+id/txt_input_coupon_code"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/large"
+                    android:textDirection="locale"
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/semi_white"
+                    android:gravity="start|center_vertical"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_weight="0.9"
+                    android:hint="@string/have_a_discount_code_enter_here"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:inputType="textPersonName"
+                    android:lines="1"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/container_info"
+        android:layout_above="@id/btn_action"
+        layout="@layout/layout_container_cart_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <co.tinab.darchin.view.toolbox.ButtonNormal
+        android:id="@+id/btn_action"
+        style="@style/MyButton"
+        android:layout_alignParentBottom="true"
+        android:text="@string/choose_address"/>
+
+</RelativeLayout>

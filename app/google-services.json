@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "14702864056",
+    "firebase_url": "https://darchin-1518188475912.firebaseio.com",
+    "project_id": "darchin-1518188475912",
+    "storage_bucket": "darchin-1518188475912.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14702864056:android:699a2256acb7eb5e",
+        "android_client_info": {
+          "package_name": "co.tinab.darchin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14702864056-7jtam25kcp33lii45bo1jji53jib4au6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWkbPVuAAuHGsk6BA40n-fUm9dZxw9Zlk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

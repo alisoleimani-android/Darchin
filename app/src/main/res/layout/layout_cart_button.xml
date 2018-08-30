@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorAccent"
+    android:padding="8dp">
+    <co.tinab.darchin.view.toolbox.TextViewLight
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:text="@string/watch_shopping"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="4dp"
+        android:paddingTop="4dp"/>
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tint="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@id/txt"
+        app:layout_constraintTop_toTopOf="@id/txt"
+        app:layout_constraintBottom_toBottomOf="@id/txt"
+        android:layout_margin="4dp"
+        android:src="@drawable/ic_cart_shopping_24dp"
+        tools:ignore="ContentDescription" />
+    <co.tinab.darchin.view.toolbox.TextViewNormal
+        android:id="@+id/txt_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="30dp"
+        android:minWidth="30dp"
+        android:gravity="center"
+        android:paddingTop="3dp"
+        android:textSize="@dimen/semi_large"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintTop_toTopOf="@id/txt"
+        app:layout_constraintBottom_toBottomOf="@id/txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="4dp"
+        android:background="@drawable/count_white_bk" />
+</android.support.constraint.ConstraintLayout>

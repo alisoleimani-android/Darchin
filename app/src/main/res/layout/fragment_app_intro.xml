@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="co.tinab.darchin.controller.fragment.other.AppIntroFragment">
+
+    <include
+        android:id="@+id/container_toolbar"
+        layout="@layout/toolbar_simple_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <klogi.com.RtlViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/container_toolbar"
+        android:layout_above="@id/indicator"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        app:ci_drawable="@drawable/indicator_selected_drawable"
+        app:ci_drawable_unselected="@drawable/indicator_unselected_drawable" />
+
+</RelativeLayout>

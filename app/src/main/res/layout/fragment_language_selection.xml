@@ -1,0 +1,30 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.tinab.darchin.controller.fragment.user.LanguageSelectionFragment">
+
+    <include
+        android:id="@+id/container_toolbar"
+        layout="@layout/toolbar_simple_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <co.tinab.darchin.view.toolbox.MyRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/container_toolbar"
+        android:layout_above="@id/btn_confirm"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <co.tinab.darchin.view.toolbox.ButtonNormal
+        android:id="@+id/btn_confirm"
+        style="@style/MyButton"
+        android:layout_alignParentBottom="true"
+        android:text="@string/confirm" />
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.tinab.darchin.controller.fragment.authentication.VerificationFragment">
+
+    <include
+        android:id="@+id/container_toolbar"
+        layout="@layout/toolbar_simple_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@id/container_toolbar"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="@dimen/container_end_gap"
+        android:layout_marginStart="@dimen/container_start_gap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <co.tinab.darchin.view.toolbox.TextViewLight
+            android:id="@+id/txt_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/primaryText"
+            android:textSize="@dimen/large"
+            android:textDirection="locale" />
+        <co.tinab.darchin.view.toolbox.EditTextNormal
+            android:id="@+id/txt_input_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/setting_btn_bk"
+            android:textColor="@color/colorAccent"
+            android:hint="@string/enter_the_code"
+            android:textColorHint="@color/semi_white"
+            android:textDirection="ltr"
+            android:textAlignment="center"
+            android:textSize="@dimen/very_large"
+            android:layout_marginTop="24dp"
+            android:padding="16dp"
+            android:inputType="numberDecimal"
+            android:lines="1"/>
+        <co.tinab.darchin.view.toolbox.ButtonLight
+            android:id="@+id/btn_resend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textDirection="locale"
+            android:textSize="@dimen/average"
+            android:textColor="@color/colorAccent"
+            android:textAlignment="center"
+            android:padding="8dp"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+    <co.tinab.darchin.view.toolbox.ButtonNormal
+        android:id="@+id/btn_confirm"
+        style="@style/MyButton"
+        android:layout_alignParentBottom="true"
+        android:text="@string/confirm" />
+
+</RelativeLayout>

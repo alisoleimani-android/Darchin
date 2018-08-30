@@ -1,0 +1,176 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.tinab.darchin.controller.fragment.user.credit.CreditFragment">
+
+    <include
+        android:id="@+id/container_toolbar"
+        layout="@layout/toolbar_simple_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/container_start_gap"
+        android:layout_marginEnd="@dimen/container_end_gap"
+        android:layout_below="@id/container_toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <co.tinab.darchin.view.component.SectionView
+                android:id="@+id/container_section_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"/>
+
+            <co.tinab.darchin.view.toolbox.TextViewLight
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorSecondaryDark"
+                android:textSize="@dimen/large"
+                android:text="@string/account_balance"
+                android:layout_gravity="center_horizontal"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/_90sdp"
+                android:background="@drawable/setting_btn_bk"
+                android:layout_marginTop="8dp"
+                android:padding="16dp">
+                <co.tinab.darchin.view.toolbox.MoneyTextView
+                    android:id="@+id/txt_account_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+
+            <co.tinab.darchin.view.toolbox.TextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/average"
+                android:textAlignment="center"
+                android:gravity="start"
+                android:text="@string/credit_info"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/setting_btn_bk"
+                android:layout_marginTop="40dp">
+
+                <LinearLayout
+                    android:id="@+id/btn_charge_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/field_min_height"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
+                    android:padding="8dp">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.9"
+                        android:gravity="start|center_vertical"
+                        android:layout_gravity="start|center_vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center_vertical"
+                            android:src="@drawable/ic_credit_24dp"
+                            android:tint="@color/colorAccent"
+                            android:contentDescription="@drawable/ic_credit_24dp" />
+                        <co.tinab.darchin.view.toolbox.TextViewLight
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|center_vertical"
+                            android:textSize="@dimen/large"
+                            android:textColor="@color/primaryText"
+                            android:text="@string/increase_credit_to_desired_amount"
+                            android:layout_marginStart="8dp" />
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_show_all"
+                        android:tint="@color/colorAccent"
+                        android:layout_weight="0.1"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@drawable/ic_show_all" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/semi_white"
+                    android:layout_marginStart="40dp"/>
+
+                <LinearLayout
+                    android:id="@+id/btn_gift"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/field_min_height"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
+                    android:padding="8dp">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.9"
+                        android:gravity="start|center_vertical"
+                        android:layout_gravity="start|center_vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center_vertical"
+                            android:src="@drawable/ic_gift_credit_24dp"
+                            android:tint="@color/colorAccent"
+                            android:contentDescription="@drawable/ic_gift_credit_24dp" />
+                        <co.tinab.darchin.view.toolbox.TextViewLight
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|center_vertical"
+                            android:textSize="@dimen/large"
+                            android:textColor="@color/primaryText"
+                            android:text="@string/charge_account_by_gift_code"
+                            android:layout_marginStart="8dp" />
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_show_all"
+                        android:tint="@color/colorAccent"
+                        android:layout_weight="0.1"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@drawable/ic_show_all" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <co.tinab.darchin.view.component.SectionView
+                android:id="@+id/container_section_bottom"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

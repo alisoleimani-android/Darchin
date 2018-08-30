@@ -1,0 +1,36 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.tinab.darchin.controller.fragment.order.OrderDescriptionFragment">
+
+    <include
+        android:id="@+id/container_toolbar"
+        layout="@layout/toolbar_simple_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <co.tinab.darchin.view.toolbox.EditTextLight
+        android:id="@+id/txt_input_desc"
+        android:layout_below="@id/container_toolbar"
+        android:layout_above="@id/btn_submit"
+        android:background="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="viewStart"
+        android:textDirection="locale"
+        android:textColor="@color/primaryText"
+        android:textSize="@dimen/large"
+        android:gravity="top|start"
+        android:padding="16dp"
+        android:inputType="textMultiLine"
+        android:hint="@string/enter_the_description_about_your_order" />
+
+    <co.tinab.darchin.view.toolbox.ButtonNormal
+        android:id="@+id/btn_submit"
+        android:layout_alignParentBottom="true"
+        style="@style/MyButton"
+        android:text="@string/submit_description"/>
+
+</RelativeLayout>

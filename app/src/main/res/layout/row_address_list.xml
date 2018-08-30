@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/MyCardViewStyle"
+    android:layout_margin="8dp">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="80dp">
+        <co.tinab.darchin.view.toolbox.TextViewNormal
+            android:id="@+id/txt_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:textSize="@dimen/very_large"
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:textColor="@color/colorSecondaryDark"/>
+        <co.tinab.darchin.view.toolbox.TextViewLight
+            android:id="@+id/txt_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/txt_tag"
+            app:layout_constraintStart_toStartOf="@id/txt_tag"
+            app:layout_constraintEnd_toStartOf="@id/img"
+            android:textSize="@dimen/semi_large"
+            android:textColor="@color/secondaryText"
+            android:gravity="start|center_vertical"
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:layout_marginTop="8dp" />
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_show_all"
+            android:tint="@color/colorAccent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@drawable/ic_show_all" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

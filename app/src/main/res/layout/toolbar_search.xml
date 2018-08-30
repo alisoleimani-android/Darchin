@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MyToolbar">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:tint="@color/textOnPrimary"
+            tools:ignore="ContentDescription" />
+        <co.tinab.darchin.view.toolbox.TextViewLight
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/btn_filter"
+            android:layout_toEndOf="@id/btn_back"
+            android:layout_centerVertical="true"
+            android:textColor="@color/textOnPrimary"
+            android:textSize="@dimen/average"
+            android:textAlignment="center"
+            android:textDirection="locale" />
+        <ImageButton
+            android:id="@+id/btn_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_filter_24dp"
+            android:padding="8dp"
+            android:visibility="invisible"
+            android:layout_marginEnd="8dp"
+            android:tint="@color/textOnPrimary"
+            android:contentDescription="@drawable/ic_filter_24dp" />
+    </RelativeLayout>
+</android.support.v7.widget.Toolbar>

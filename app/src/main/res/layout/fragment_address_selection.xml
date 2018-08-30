@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="co.tinab.darchin.controller.fragment.order.AddressSelectionFragment">
+
+    <include
+        android:id="@+id/container_toolbar"
+        layout="@layout/toolbar_simple_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/container_delivery_cost"
+        android:layout_below="@id/container_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+        <co.tinab.darchin.view.toolbox.TextViewLight
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/semi_large"
+            android:textColor="@color/primaryText"
+            android:textDirection="locale"
+            android:text="@string/cost_of_delivery"/>
+        <co.tinab.darchin.view.toolbox.MoneyTextView
+            android:id="@+id/txt_delivery_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/semi_large"
+            android:textColor="@color/colorAccent"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <co.tinab.darchin.view.toolbox.MyRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/container_delivery_cost"
+        android:layout_above="@id/container_info"/>
+
+    <co.tinab.darchin.view.component.EmptyView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:custom_text="@string/you_have_not_entered_any_address_yet"
+        android:layout_centerInParent="true"/>
+
+    <co.tinab.darchin.view.component.LoadingView
+        android:id="@+id/loading_view"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/container_info"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_add_18dp"
+        android:tint="@android:color/white"
+        app:fabSize="normal"
+        app:elevation="4dp"
+        android:layout_marginEnd="@dimen/fab_margin" />
+
+    <include
+        android:id="@+id/container_info"
+        android:layout_above="@id/btn_payment"
+        layout="@layout/layout_container_cart_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <co.tinab.darchin.view.toolbox.ButtonNormal
+        android:id="@+id/btn_payment"
+        style="@style/MyButton"
+        android:layout_alignParentBottom="true"
+        android:text="@string/online_payment"/>
+
+</RelativeLayout>

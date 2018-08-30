@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MyRecyclerView">
+        <attr name="orientation" format="string" />
+        <attr name="isReverse" format="boolean"/>
+        <attr name="isNestedScrollingEnable" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="EmptyView">
+        <attr name="custom_text" format="string"/>
+        <attr name="custom_icon" format="reference"/>
+    </declare-styleable>
+
+</resources>

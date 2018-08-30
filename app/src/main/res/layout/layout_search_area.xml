@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="@drawable/text_input_bk">
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:src="@drawable/ic_search_24dp"
+        android:tint="@color/colorAccent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        tools:ignore="ContentDescription" />
+    <co.tinab.darchin.view.toolbox.TextViewNormal
+        android:id="@+id/txt_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/semi_large"
+        android:textColor="@color/primaryText"
+        android:padding="8dp"
+        android:textDirection="locale"
+        android:layout_toEndOf="@id/img"
+        android:layout_alignParentTop="true"/>
+    <co.tinab.darchin.view.toolbox.EditTextLight
+        android:id="@+id/txt_input_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/txt_city"
+        android:background="@android:color/transparent"
+        android:textColor="@color/primaryText"
+        android:textDirection="locale"
+        android:textSize="@dimen/semi_large"
+        android:gravity="start|center_vertical"
+        android:textAlignment="viewStart"
+        android:textColorHint="@color/secondaryText"
+        android:hint="@string/enter_your_area"
+        android:padding="8dp"
+        android:inputType="textPersonName"
+        android:imeOptions="actionSearch"/>
+</RelativeLayout>

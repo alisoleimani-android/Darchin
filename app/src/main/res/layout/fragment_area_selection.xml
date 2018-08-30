@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="co.tinab.darchin.controller.fragment.user.address.AreaSelectionFragment">
+    <include
+        android:id="@+id/container_toolbar"
+        layout="@layout/toolbar_simple_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <include
+        android:id="@+id/container_search_input"
+        android:layout_below="@id/container_toolbar"
+        layout="@layout/layout_search_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"/>
+
+    <co.tinab.darchin.view.toolbox.MyRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/container_search_input"
+        android:layout_above="@id/btn_continue"
+        android:layout_margin="8dp"/>
+
+    <co.tinab.darchin.view.component.EmptyView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:custom_text="@string/this_area_is_still_not_under_our_coverage"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+
+    <co.tinab.darchin.view.component.LoadingView
+        android:id="@+id/loading_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <co.tinab.darchin.view.toolbox.ButtonNormal
+        android:id="@+id/btn_continue"
+        android:layout_alignParentBottom="true"
+        android:text="@string/continuation"
+        android:visibility="gone"
+        style="@style/MyButton"/>
+</RelativeLayout>

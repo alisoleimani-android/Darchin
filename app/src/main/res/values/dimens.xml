@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="huge">@dimen/_18ssp</dimen>
+    <dimen name="very_large">@dimen/_14ssp</dimen>
+    <dimen name="large">@dimen/_12ssp</dimen>
+    <dimen name="semi_large">@dimen/_11ssp</dimen>
+    <dimen name="average">@dimen/_9ssp</dimen>
+    <dimen name="mini">@dimen/_8ssp</dimen>
+
+    <dimen name="store_image_height">@dimen/_80sdp</dimen>
+    <dimen name="store_image_width">@dimen/_80sdp</dimen>
+
+    <dimen name="product_image_height">@dimen/_80sdp</dimen>
+    <dimen name="product_image_width">@dimen/_80sdp</dimen>
+
+    <dimen name="courier_image_height">@dimen/_70sdp</dimen>
+    <dimen name="courier_image_width">@dimen/_70sdp</dimen>
+
+    <dimen name="horizontal_product_image_height">@dimen/_110sdp</dimen>
+    <dimen name="horizontal_product_image_width">@dimen/_110sdp</dimen>
+
+    <dimen name="horizontal_store_image_height">@dimen/_110sdp</dimen>
+    <dimen name="horizontal_store_image_width">@dimen/_110sdp</dimen>
+
+    <dimen name="intro_img_width">@dimen/_150sdp</dimen>
+    <dimen name="intro_img_height">@dimen/_150sdp</dimen>
+
+    <dimen name="container_start_gap">@dimen/_4sdp</dimen>
+    <dimen name="container_end_gap">@dimen/_4sdp</dimen>
+
+    <dimen name="section_top_margin">@dimen/_3sdp</dimen>
+    <dimen name="section_bottom_margin">@dimen/_3sdp</dimen>
+
+    <dimen name="money_unit_size">@dimen/_10ssp</dimen>
+    <dimen name="money_unit_margin">@dimen/_4sdp</dimen>
+
+    <dimen name="nav_drawer_width">@dimen/_180sdp</dimen>
+    <dimen name="activity_vertical_margin">@dimen/_15sdp</dimen>
+    <dimen name="activity_horizontal_margin">@dimen/_15sdp</dimen>
+    
+    <dimen name="riv_border_width">0.5dp</dimen>
+    <dimen name="riv_corner_radius">@dimen/_3sdp</dimen>
+    <dimen name="fab_margin">@dimen/_16sdp</dimen>
+
+    <dimen name="field_min_height">@dimen/_45sdp</dimen>
+</resources>

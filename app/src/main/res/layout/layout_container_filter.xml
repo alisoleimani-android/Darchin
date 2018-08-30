@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/btn_toggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:padding="8dp">
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_18dp"
+            android:tint="@color/colorAccent"
+            android:layout_weight="0.1"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@drawable/ic_add_18dp" />
+        <co.tinab.darchin.view.toolbox.TextViewLight
+            android:id="@+id/txt_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="5dp"
+            android:layout_weight="0.9"
+            android:layout_gravity="center_vertical"
+            android:textDirection="locale"
+            android:textSize="@dimen/semi_large"
+            android:textColor="@color/primaryText"/>
+    </LinearLayout>
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/expandable_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:el_duration="300"
+        app:el_expanded="false"
+        app:el_parallax="0.5">
+        <co.tinab.darchin.view.toolbox.MyRecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isNestedScrollingEnable="false"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"/>
+    </net.cachapa.expandablelayout.ExpandableLayout>
+
+</LinearLayout>
