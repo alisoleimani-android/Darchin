@@ -10,4 +10,6 @@ import co.tinab.darchin.model.store.ProductItem;
 public interface ProductClickListener {
     void onAddItem(Product product, ProductItem item, int productPosition);
     void onRemoveItem(Product product, ProductItem item, int productPosition);
+    void onProductImageTouchedDown(Product product);
+    void onProductImageTouchedUp();
 }

@@ -11,8 +11,6 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-import net.cachapa.expandablelayout.ExpandableLayout;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,15 +63,14 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         return orderList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ExpandableLayout.OnExpansionUpdateListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ViewGroup containerCourier;
         private RoundedImageView img,imgCourier;
         private TextViewNormal txtName;
         private TextViewLight txtCreatedAt,txtStatus,txtDeliveryType,txtCourierName,txtVehicle,txtAddress;
         private MoneyTextView txtTotalPrice;
-        private ButtonLight btnComment,btnShowMore;
+        private ButtonLight btnComment;
         private TextViewLight txtDeliveryTime;
-        private ExpandableLayout expandableLayout;
 
         private MyRecyclerView recyclerView;
         private List<OrderItem> orderItems = new ArrayList<>();
@@ -95,8 +92,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             txtVehicle = itemView.findViewById(R.id.txt_vehicle);
             txtAddress = itemView.findViewById(R.id.txt_address);
             btnComment = itemView.findViewById(R.id.btn_comment);
-            btnShowMore = itemView.findViewById(R.id.btn_show_more);
-            expandableLayout = itemView.findViewById(R.id.expandable_layout);
             containerCourier = itemView.findViewById(R.id.container_courier);
 
             recyclerView = itemView.findViewById(R.id.recycler_view);
@@ -104,10 +99,8 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             recyclerView.setAdapter(adapter);
 
             txtStatus.setOnClickListener(this);
-            btnShowMore.setOnClickListener(this);
             img.setOnClickListener(this);
             txtName.setOnClickListener(this);
-            expandableLayout.setOnExpansionUpdateListener(this);
         }
         private void bind(Order order){
             if (order != null) {
@@ -199,6 +192,11 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                 }else {
                     btnComment.setVisibility(View.INVISIBLE);
                 }
+
+                // notify adapter
+                if (!orderItems.isEmpty()) orderItems.clear();
+                orderItems.addAll(orderList.get(getAdapterPosition()).getOrderItems(row.getContext()));
+                adapter.notifyDataSetChanged();
             }
         }
 
@@ -209,16 +207,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                     if (listener != null) {
                         listener.onBtnCommentClicked(orderList.get(getAdapterPosition()));
                     }
-                    break;
-
-                case R.id.btn_show_more:
-                    // notify adapter before toggle
-                    if (!orderItems.isEmpty()) orderItems.clear();
-                    orderItems.addAll(orderList.get(getAdapterPosition()).getOrderItems(row.getContext()));
-                    adapter.notifyDataSetChanged();
-
-                    // toggle expand layout
-                    expandableLayout.toggle(true);
                     break;
 
                 case R.id.txt_status:
@@ -237,19 +225,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                     if (listener != null) {
                         listener.onGoingToStore(orderList.get(getAdapterPosition()));
                     }
-                    break;
-            }
-        }
-
-        @Override
-        public void onExpansionUpdate(float expansionFraction, int state) {
-            switch (state){
-                case ExpandableLayout.State.COLLAPSED:
-                    btnShowMore.setText(row.getContext().getString(R.string.btn_show_more));
-                    break;
-
-                case ExpandableLayout.State.EXPANDED:
-                    btnShowMore.setText(row.getContext().getString(R.string.close_show_more));
                     break;
             }
         }

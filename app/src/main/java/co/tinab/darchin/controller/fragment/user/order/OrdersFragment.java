@@ -22,6 +22,7 @@ import co.tinab.darchin.controller.fragment.store.StoreFragment;
 import co.tinab.darchin.controller.fragment.user.ProfileFragment;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.model.User;
+import co.tinab.darchin.model.address.City;
 import co.tinab.darchin.model.network.MyCallback;
 import co.tinab.darchin.model.network.request_helpers.OrderRequestHelper;
 import co.tinab.darchin.model.network.request_helpers.StoreRequestHelper;
@@ -31,6 +32,7 @@ import co.tinab.darchin.model.network.resources.StoreResource;
 import co.tinab.darchin.model.order.Order;
 import co.tinab.darchin.view.component.EmptyView;
 import co.tinab.darchin.view.component.LoadingView;
+import co.tinab.darchin.view.component.SectionView;
 import co.tinab.darchin.view.dialog.QuestionDialog;
 import co.tinab.darchin.view.dialog.WaitingDialog;
 import co.tinab.darchin.view.toolbox.MyRecyclerView;
@@ -40,7 +42,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OrdersFragment extends Fragment implements OrderListAdapter.Listener, SwipeRefreshLayout.OnRefreshListener {
+public class OrdersFragment extends Fragment implements OrderListAdapter.Listener, SwipeRefreshLayout.OnRefreshListener, SectionView.RequestCompleteListener {
     private List<Order> orderList = new ArrayList<>();
     private OrderListAdapter adapter;
     private EmptyView emptyView;
@@ -48,6 +50,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
     private WaitingDialog waitingDialog;
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean isFragmentLoaded = false,isFragmentLeaved = false;
+    private SectionView sectionView;
 
     public static OrdersFragment newInstance(){
         return new OrdersFragment();
@@ -75,6 +78,9 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
         adapter = new OrderListAdapter(orderList);
         adapter.setOrderListAdapterListener(this);
         recyclerView.setAdapter(adapter);
+
+        sectionView = view.findViewById(R.id.container_section);
+        sectionView.setOnRequestCompleteListener(this);
 
         emptyView = view.findViewById(R.id.empty_view);
         loadingView = view.findViewById(R.id.loading_view);
@@ -104,6 +110,19 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
                     // get orders
                     loadingView.show();
                     getOrders();
+
+                    // get sections
+                    City city = User.getInstance(getContext()).getCity(getContext());
+                    if (city != null) {
+                        if (!city.getName().isEmpty()) {
+                            if (FunctionHelper.isConnected(getContext())) {
+                                sectionView.requestData("orders","top");
+                            }else {
+                                sectionView.bind(User.getInstance(getContext()).getSections(getContext(),"orders","top"));
+                            }
+                        }
+                    }
+
                 }
             },50);
         }
@@ -286,5 +305,15 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
                 if (getContext() instanceof MainActivity) ((MainActivity)getContext()).logout();
             }
         });
+    }
+
+    @Override
+    public void onRequestCompleted() {
+
+    }
+
+    @Override
+    public void onRequestFailed() {
+
     }
 }

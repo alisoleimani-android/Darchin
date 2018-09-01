@@ -18,20 +18,22 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import co.tinab.darchin.R;
 import co.tinab.darchin.controller.activity.MainActivity;
 import co.tinab.darchin.controller.adapter.AreaListAdapter;
 import co.tinab.darchin.controller.fragment.order.AddressSelectionFragment;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.controller.tools.SimpleDividerItemDecoration;
+import co.tinab.darchin.model.User;
 import co.tinab.darchin.model.address.Address;
-import co.tinab.darchin.model.address.City;
 import co.tinab.darchin.model.address.AreaSearch;
+import co.tinab.darchin.model.address.City;
 import co.tinab.darchin.model.network.MyCallback;
 import co.tinab.darchin.model.network.request_helpers.LocationRequestHelper;
 import co.tinab.darchin.model.network.resources.AreaResource;
-import co.tinab.darchin.R;
 import co.tinab.darchin.view.component.EmptyView;
 import co.tinab.darchin.view.component.LoadingView;
+import co.tinab.darchin.view.component.SectionView;
 import co.tinab.darchin.view.toolbox.ButtonNormal;
 import co.tinab.darchin.view.toolbox.EditTextLight;
 import co.tinab.darchin.view.toolbox.MyRecyclerView;
@@ -44,7 +46,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AreaSelectionFragment extends Fragment implements View.OnClickListener,TextWatcher {
+public class AreaSelectionFragment extends Fragment implements View.OnClickListener,TextWatcher, SectionView.RequestCompleteListener {
     private List<AreaSearch> areaList = new ArrayList<>();
     private AreaListAdapter adapter;
     private Address address;
@@ -137,6 +139,20 @@ public class AreaSelectionFragment extends Fragment implements View.OnClickListe
 
         // Empty view for empty list
         emptyView = view.findViewById(R.id.empty_view);
+
+        SectionView sectionView = view.findViewById(R.id.container_section);
+        sectionView.setOnRequestCompleteListener(this);
+
+        City city = User.getInstance(getContext()).getCity(getContext());
+        if (city != null) {
+            if (!city.getName().isEmpty()) {
+                if (FunctionHelper.isConnected(getContext())) {
+                    sectionView.requestData("area","top");
+                }else {
+                    sectionView.bind(User.getInstance(getContext()).getSections(getContext(),"area","top"));
+                }
+            }
+        }
     }
 
     @Override
@@ -272,5 +288,15 @@ public class AreaSelectionFragment extends Fragment implements View.OnClickListe
             emptyView.show();
         }
         this.adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onRequestCompleted() {
+
+    }
+
+    @Override
+    public void onRequestFailed() {
+
     }
 }

@@ -32,13 +32,14 @@ import co.tinab.darchin.controller.fragment.other.MySupportMapFragment;
 import co.tinab.darchin.controller.tools.Display;
 import co.tinab.darchin.controller.tools.MyDateTime;
 import co.tinab.darchin.model.store.Store;
+import co.tinab.darchin.view.component.SectionView;
 import co.tinab.darchin.view.toolbox.MoneyTextView;
 import co.tinab.darchin.view.toolbox.TextViewLight;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InfoFragment extends Fragment implements OnMapReadyCallback, ExpandableLayout.OnExpansionUpdateListener {
+public class InfoFragment extends Fragment implements OnMapReadyCallback, ExpandableLayout.OnExpansionUpdateListener, SectionView.RequestCompleteListener {
     private NestedScrollView scrollView;
     private Store store;
     private ExpandableLayout expandableLayout;
@@ -150,6 +151,20 @@ public class InfoFragment extends Fragment implements OnMapReadyCallback, Expand
 
         TextViewLight txtFriday = view.findViewById(R.id.txt_friday_time);
         txtFriday.setText(store.getHoursOfDayStr(getContext(),"friday"));
+
+        SectionView sectionView = view.findViewById(R.id.container_section);
+        sectionView.setOnRequestCompleteListener(this);
+
+//        City city = User.getInstance(getContext()).getCity(getContext());
+//        if (city != null) {
+//            if (!city.getName().isEmpty()) {
+//                if (FunctionHelper.isConnected(getContext())) {
+//                    sectionView.requestData("support","top");
+//                }else {
+//                    sectionView.bind(User.getInstance(getContext()).getSections(getContext(),"support","top"));
+//                }
+//            }
+//        }
     }
 
     @Override
@@ -213,5 +228,15 @@ public class InfoFragment extends Fragment implements OnMapReadyCallback, Expand
                 txtServiceRange.setText(store.getServiceRange(getContext()).replace("...",""));
                 break;
         }
+    }
+
+    @Override
+    public void onRequestCompleted() {
+
+    }
+
+    @Override
+    public void onRequestFailed() {
+
     }
 }

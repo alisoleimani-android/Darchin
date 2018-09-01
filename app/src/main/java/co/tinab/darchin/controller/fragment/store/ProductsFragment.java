@@ -12,13 +12,14 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import co.tinab.darchin.R;
 import co.tinab.darchin.controller.adapter.VerticalProductListAdapter;
 import co.tinab.darchin.controller.interfaces.ProductClickListener;
 import co.tinab.darchin.model.store.Category;
 import co.tinab.darchin.model.store.Product;
 import co.tinab.darchin.model.store.ProductItem;
 import co.tinab.darchin.model.store.Store;
-import co.tinab.darchin.R;
+import co.tinab.darchin.view.dialog.ProductImageDialog;
 import co.tinab.darchin.view.toolbox.MyRecyclerView;
 import co.tinab.darchin.view.toolbox.MySnackbar;
 
@@ -30,6 +31,7 @@ public class ProductsFragment extends Fragment implements ProductClickListener {
     private Store store;
     private boolean isFragmentLoaded = false;
     private VerticalProductListAdapter adapter;
+    private ProductImageDialog dialog;
 
     public static ProductsFragment newInstance(Store store, Category category){
         ProductsFragment productsFragment = new ProductsFragment();
@@ -167,5 +169,16 @@ public class ProductsFragment extends Fragment implements ProductClickListener {
                 }
             }
         }
+    }
+
+    @Override
+    public void onProductImageTouchedDown(Product product) {
+        dialog = ProductImageDialog.newInstance(product.getPicture());
+        dialog.show(getChildFragmentManager(),"ProductImageDialog");
+    }
+
+    @Override
+    public void onProductImageTouchedUp() {
+        if (dialog != null) dialog.dismiss();
     }
 }

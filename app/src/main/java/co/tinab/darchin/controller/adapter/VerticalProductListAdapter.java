@@ -1,5 +1,6 @@
 package co.tinab.darchin.controller.adapter;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import co.tinab.darchin.R;
 import co.tinab.darchin.controller.interfaces.ProductClickListener;
 import co.tinab.darchin.controller.interfaces.ProductItemClickListener;
 import co.tinab.darchin.controller.tools.FunctionHelper;
+import co.tinab.darchin.controller.tools.ProductImageTouchDetection;
 import co.tinab.darchin.model.store.Product;
 import co.tinab.darchin.model.store.ProductItem;
 import co.tinab.darchin.view.toolbox.MoneyTextView;
@@ -97,6 +99,7 @@ public class VerticalProductListAdapter extends RecyclerView.Adapter<RecyclerVie
             adapter = new ProductItemsListAdapter(items);
             recyclerView.setAdapter(adapter);
         }
+        @SuppressLint("ClickableViewAccessibility")
         void bind(final Product product){
             if (FunctionHelper.isConnected(row.getContext())) {
                 Picasso.with(row.getContext())
@@ -135,6 +138,18 @@ public class VerticalProductListAdapter extends RecyclerView.Adapter<RecyclerVie
                     if (listener != null) listener.onRemoveItem(product,item,getAdapterPosition());
                 }
             });
+
+            imgFood.setOnTouchListener(new ProductImageTouchDetection() {
+                @Override
+                protected void onLongPress() {
+                    if (listener != null) listener.onProductImageTouchedDown(product);
+                }
+
+                @Override
+                protected void onRelease() {
+                    if (listener != null) listener.onProductImageTouchedUp();
+                }
+            });
         }
     }
 
@@ -159,6 +174,7 @@ public class VerticalProductListAdapter extends RecyclerView.Adapter<RecyclerVie
             btnAdd = itemView.findViewById(R.id.btn_add);
             btnRemove = itemView.findViewById(R.id.btn_remove);
         }
+        @SuppressLint("ClickableViewAccessibility")
         void bind(final Product product){
             if (product.hasAnItem()) {
                 if (FunctionHelper.isConnected(row.getContext())) {
@@ -224,6 +240,18 @@ public class VerticalProductListAdapter extends RecyclerView.Adapter<RecyclerVie
                     public void onClick(View v) {
                         ProductItem item = product.getItems().get(0);
                         if (listener != null) listener.onRemoveItem(product,item,getAdapterPosition());
+                    }
+                });
+
+                imgFood.setOnTouchListener(new ProductImageTouchDetection() {
+                    @Override
+                    protected void onLongPress() {
+                        if (listener != null) listener.onProductImageTouchedDown(product);
+                    }
+
+                    @Override
+                    protected void onRelease() {
+                        if (listener != null) listener.onProductImageTouchedUp();
                     }
                 });
             }

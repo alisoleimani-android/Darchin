@@ -153,104 +153,96 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_margin="8dp">
-            <net.cachapa.expandablelayout.ExpandableLayout
-                android:id="@+id/expandable_layout"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:el_duration="300"
-                app:el_expanded="false"
-                app:el_parallax="0.5">
-                <LinearLayout
-                    android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/container_courier"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <android.support.constraint.ConstraintLayout
-                        android:id="@+id/container_courier"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="16dp">
-                        <com.makeramen.roundedimageview.RoundedImageView
-                            android:id="@+id/img_courier"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            android:scaleType="fitStart"
-                            app:riv_border_color="@color/riv_border_color"
-                            app:riv_border_width="@dimen/riv_border_width"
-                            app:riv_corner_radius="@dimen/riv_corner_radius"
-                            app:riv_mutate_background="true"
-                            app:riv_oval="true"
-                            app:riv_tile_mode="clamp" />
-                        <LinearLayout
-                            android:id="@+id/container_courier_name"
-                            android:orientation="horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/img_courier"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="8dp">
-                            <co.tinab.darchin.view.toolbox.TextViewLight
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textDirection="locale"
-                                android:textColor="@color/primaryText"
-                                android:textSize="@dimen/average"
-                                android:text="@string/courier_name_label"/>
-                            <co.tinab.darchin.view.toolbox.TextViewLight
-                                android:id="@+id/txt_courier_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:textDirection="locale"
-                                android:textColor="@color/secondaryText"
-                                android:textSize="@dimen/average" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@id/container_courier_name"
-                            app:layout_constraintStart_toEndOf="@id/img_courier"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="4dp">
-                            <co.tinab.darchin.view.toolbox.TextViewLight
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textDirection="locale"
-                                android:textColor="@color/primaryText"
-                                android:textSize="@dimen/average"
-                                android:text="@string/courier_vehicle_label"/>
-                            <co.tinab.darchin.view.toolbox.TextViewLight
-                                android:id="@+id/txt_vehicle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:textDirection="locale"
-                                android:textColor="@color/secondaryText"
-                                android:textSize="@dimen/average" />
-                        </LinearLayout>
-                    </android.support.constraint.ConstraintLayout>
-
-                    <co.tinab.darchin.view.toolbox.TextViewLight
-                        android:id="@+id/txt_address"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp">
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/img_courier"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textDirection="locale"
-                        android:textColor="@color/primaryText"
-                        android:textSize="@dimen/average"
-                        android:layout_marginTop="@dimen/_2sdp"
-                        android:layout_marginBottom="@dimen/_2sdp"/>
-
-                    <co.tinab.darchin.view.toolbox.MyRecyclerView
-                        android:id="@+id/recycler_view"
-                        android:layout_width="match_parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:scaleType="fitStart"
+                        app:riv_border_color="@color/riv_border_color"
+                        app:riv_border_width="@dimen/riv_border_width"
+                        app:riv_corner_radius="@dimen/riv_corner_radius"
+                        app:riv_mutate_background="true"
+                        app:riv_oval="true"
+                        app:riv_tile_mode="clamp" />
+                    <LinearLayout
+                        android:id="@+id/container_courier_name"
+                        android:orientation="horizontal"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/order_items_container_bk"/>
-                </LinearLayout>
-            </net.cachapa.expandablelayout.ExpandableLayout>
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/img_courier"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp">
+                        <co.tinab.darchin.view.toolbox.TextViewLight
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textDirection="locale"
+                            android:textColor="@color/primaryText"
+                            android:textSize="@dimen/average"
+                            android:text="@string/courier_name_label"/>
+                        <co.tinab.darchin.view.toolbox.TextViewLight
+                            android:id="@+id/txt_courier_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textDirection="locale"
+                            android:textColor="@color/secondaryText"
+                            android:textSize="@dimen/average" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/container_courier_name"
+                        app:layout_constraintStart_toEndOf="@id/img_courier"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp">
+                        <co.tinab.darchin.view.toolbox.TextViewLight
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textDirection="locale"
+                            android:textColor="@color/primaryText"
+                            android:textSize="@dimen/average"
+                            android:text="@string/courier_vehicle_label"/>
+                        <co.tinab.darchin.view.toolbox.TextViewLight
+                            android:id="@+id/txt_vehicle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textDirection="locale"
+                            android:textColor="@color/secondaryText"
+                            android:textSize="@dimen/average" />
+                    </LinearLayout>
+                </android.support.constraint.ConstraintLayout>
+
+                <co.tinab.darchin.view.toolbox.TextViewLight
+                    android:id="@+id/txt_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textDirection="locale"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/average"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"/>
+
+                <co.tinab.darchin.view.toolbox.MyRecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/order_items_container_bk"/>
+            </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -279,17 +271,6 @@
                     android:layout_centerVertical="true"
                     tools:ignore="RelativeOverlap" />
             </RelativeLayout>
-            <co.tinab.darchin.view.toolbox.ButtonLight
-                android:id="@+id/btn_show_more"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/order_show_more_btn_bk"
-                android:text="@string/btn_show_more"
-                android:textSize="@dimen/average"
-                android:textColor="@android:color/white"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:minHeight="30dp" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

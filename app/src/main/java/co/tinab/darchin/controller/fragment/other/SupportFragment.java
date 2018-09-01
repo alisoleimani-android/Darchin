@@ -18,14 +18,18 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import co.tinab.darchin.model.Setting;
 import co.tinab.darchin.R;
+import co.tinab.darchin.controller.tools.FunctionHelper;
+import co.tinab.darchin.model.Setting;
+import co.tinab.darchin.model.User;
+import co.tinab.darchin.model.address.City;
+import co.tinab.darchin.view.component.SectionView;
 import co.tinab.darchin.view.toolbox.TextViewLight;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SupportFragment extends Fragment implements View.OnClickListener {
+public class SupportFragment extends Fragment implements View.OnClickListener, SectionView.RequestCompleteListener {
     private Map<String,String> map = new LinkedHashMap<>();
 
     public static SupportFragment newInstance(){
@@ -58,6 +62,9 @@ public class SupportFragment extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.btn_call).setOnClickListener(this);
         view.findViewById(R.id.btn_back).setOnClickListener(this);
 
+        SectionView sectionView = view.findViewById(R.id.container_section);
+        sectionView.setOnRequestCompleteListener(this);
+
         String aboutUs = map.get("about_us");
         if (aboutUs != null)
             ((TextViewLight)view.findViewById(R.id.txt_about_us)).setText(aboutUs);
@@ -65,6 +72,17 @@ public class SupportFragment extends Fragment implements View.OnClickListener {
         String address = map.get("address");
         if (address != null)
             ((TextViewLight)view.findViewById(R.id.txt_address)).setText(address);
+
+        City city = User.getInstance(getContext()).getCity(getContext());
+        if (city != null) {
+            if (!city.getName().isEmpty()) {
+                if (FunctionHelper.isConnected(getContext())) {
+                    sectionView.requestData("support","top");
+                }else {
+                    sectionView.bind(User.getInstance(getContext()).getSections(getContext(),"support","top"));
+                }
+            }
+        }
     }
 
     private boolean isIntentAvailable(@Nullable Context ctx, Intent intent) {
@@ -130,5 +148,15 @@ public class SupportFragment extends Fragment implements View.OnClickListener {
                 startActivity(callIntent);
                 break;
         }
+    }
+
+    @Override
+    public void onRequestCompleted() {
+
+    }
+
+    @Override
+    public void onRequestFailed() {
+
     }
 }
