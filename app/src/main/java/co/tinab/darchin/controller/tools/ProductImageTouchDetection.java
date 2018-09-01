@@ -14,7 +14,6 @@ public abstract class ProductImageTouchDetection implements View.OnTouchListener
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        v.getParent().requestDisallowInterceptTouchEvent(true);
         int action = event.getActionMasked();
 
         if (action == MotionEvent.ACTION_DOWN) {
@@ -25,19 +24,16 @@ public abstract class ProductImageTouchDetection implements View.OnTouchListener
                     // touch & hold was long
                     onLongPress();
                 }
-            }, 500);
+            }, 400);
             return true;
-        }
 
-        if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+        }else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
             // touch & hold stopped
-            v.getParent().requestDisallowInterceptTouchEvent(false);
             onRelease();
             timer.cancel();
             timer = new Timer();
             return true;
         }
-
         return false;
     }
 }

@@ -28,9 +28,7 @@
             app:riv_corner_radius="@dimen/riv_corner_radius"
             app:riv_mutate_background="true"
             app:riv_oval="false"
-            app:riv_tile_mode="clamp"
-            android:clickable="true"
-            android:focusable="true"/>
+            app:riv_tile_mode="clamp" />
 
         <co.tinab.darchin.view.toolbox.TextViewNormal
             android:id="@+id/txt_name"
