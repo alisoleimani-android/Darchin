@@ -19,4 +19,7 @@ public interface CreditInterface {
 
     @POST("payment/create")
     Call<OrderResource> charge(@Header(Constant.Auth) String token, @Body RequestBody body);
+
+    @POST("account/transfer_credit")
+    Call<BasicResource> transfer(@Header(Constant.Auth) String token, @Body RequestBody body);
 }

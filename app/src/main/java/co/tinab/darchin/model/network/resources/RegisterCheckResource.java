@@ -27,6 +27,10 @@ public class RegisterCheckResource extends BasicResource {
         private boolean register;
 
         @Expose
+        @SerializedName("name")
+        private String name;
+
+        @Expose
         @SerializedName("status")
         private String status;
 
@@ -38,5 +42,9 @@ public class RegisterCheckResource extends BasicResource {
             return register;
         }
 
+        @Nullable
+        public String getName() {
+            return name;
+        }
     }
 }

@@ -247,4 +247,13 @@
     <string name="courier_price">Courier</string>
     <string name="are_you_sure_to_cancel_the_order">Are you sure, you want to cancel your order?</string>
     <string name="share_store_description">Hi, I suggest you to visit %1$s page in Darchin software, click on the link below to enter the store page:</string>
+    <string name="transfer_info">In this section, you can transfer amount of your credit to another user account in Darchin</string>
+    <string name="phone_number_of_the_user">Mobile Number</string>
+    <string name="money_transfer_field_hint">Amount (Toman)</string>
+    <string name="mobile_number_is_not_correct">The mobile number is invalid</string>
+    <string name="transfer_credit_to_another_user">Transfer Credit</string>
+    <string name="transfer_credit_to_specific_user">Transfer to %1$s</string>
+    <string name="user_not_registered">The user is not registered</string>
+    <string name="user_is_not_active">The user is not activated in Darchin</string>
+    <string name="transfer_credit_question">Are you sure you want to transfer %1$s Tomans to %2$s number %3$s ?</string>
 </resources>

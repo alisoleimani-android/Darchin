@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".controller.fragment.user.credit.TransferFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/toolbar_simple_text"
+        android:layout_alignParentTop="true"/>
+
+    <co.tinab.darchin.view.toolbox.TextViewNormal
+        android:id="@+id/txt_info"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/secondaryText"
+        android:textSize="@dimen/large"
+        android:layout_margin="@dimen/_16sdp"
+        android:text="@string/transfer_info"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/setting_btn_bk"
+        android:layout_below="@id/txt_info"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/container_start_gap"
+        android:layout_marginEnd="@dimen/container_end_gap">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/field_min_height"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:padding="8dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/ic_phone_24dp"
+                android:tint="@color/colorAccent"
+                tools:ignore="ContentDescription" />
+            <co.tinab.darchin.view.toolbox.EditTextLight
+                android:id="@+id/txt_input_mobile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/very_large"
+                android:textDirection="ltr"
+                android:textColor="@color/primaryText"
+                android:textColorHint="@color/secondaryText"
+                android:gravity="start|center_vertical"
+                android:textAlignment="viewStart"
+                android:background="@android:color/transparent"
+                android:layout_gravity="end|center_vertical"
+                android:layout_weight="0.9"
+                android:hint="@string/phone_number_of_the_user"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:inputType="phone"
+                android:lines="1"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/semi_white"
+            android:layout_marginStart="48dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/field_min_height"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:padding="8dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/ic_money_24dp"
+                android:tint="@color/colorAccent"
+                tools:ignore="ContentDescription" />
+            <co.tinab.darchin.view.toolbox.EditTextLight
+                android:id="@+id/txt_input_amount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/very_large"
+                android:textDirection="locale"
+                android:textColor="@color/primaryText"
+                android:textColorHint="@color/secondaryText"
+                android:gravity="start|center_vertical"
+                android:background="@android:color/transparent"
+                android:layout_gravity="end|center_vertical"
+                android:layout_weight="0.9"
+                android:hint="@string/money_transfer_field_hint"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:inputType="number"
+                android:lines="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <co.tinab.darchin.view.toolbox.ButtonNormal
+        android:id="@+id/btn_transfer"
+        style="@style/MyButton"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"/>
+
+</RelativeLayout>

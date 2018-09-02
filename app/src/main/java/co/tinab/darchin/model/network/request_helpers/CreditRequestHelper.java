@@ -40,4 +40,15 @@ public class CreditRequestHelper {
         CreditInterface creditInterface = MyRetrofit.getRetrofitInstance().create(CreditInterface.class);
         return creditInterface.charge(token,requestBody);
     }
+
+    public Call<BasicResource> transfer(String token, String username, String amount){
+        JsonObject mainObject = new JsonObject();
+        mainObject.addProperty("username",username);
+        mainObject.addProperty("amount",amount);
+
+        RequestBody requestBody = RequestBody.create(MediaType.parse(Constant.JSON), mainObject.toString());
+
+        CreditInterface creditInterface = MyRetrofit.getRetrofitInstance().create(CreditInterface.class);
+        return creditInterface.transfer(token,requestBody);
+    }
 }

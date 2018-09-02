@@ -75,6 +75,8 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
         btnGift = view.findViewById(R.id.btn_gift);
         btnGift.setOnClickListener(this);
 
+        view.findViewById(R.id.btn_transfer).setOnClickListener(this);
+
         City city = User.getInstance(getContext()).getCity(getContext());
         if (city != null) {
             if (!city.getName().isEmpty()) {
@@ -102,6 +104,11 @@ public class CreditFragment extends BaseFragment implements View.OnClickListener
             case R.id.btn_gift:
                 if (getActivity() != null) ((MainActivity)getActivity())
                         .pushFragment(GiftCodeFragment.newInstance(),CreditFragment.class.getName(),0);
+                break;
+
+            case R.id.btn_transfer:
+                if (getActivity() != null) ((MainActivity) getActivity())
+                        .pushFragment(TransferFragment.newInstance(),CreditFragment.class.getName(),0);
                 break;
 
             case R.id.btn_back:
