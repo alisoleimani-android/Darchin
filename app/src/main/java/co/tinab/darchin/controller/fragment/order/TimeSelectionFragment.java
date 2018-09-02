@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +18,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.tinab.darchin.R;
 import co.tinab.darchin.controller.activity.MainActivity;
 import co.tinab.darchin.controller.tools.NonSwipeableViewPager;
 import co.tinab.darchin.model.store.Cart;
-import co.tinab.darchin.R;
 import co.tinab.darchin.view.toolbox.MySnackbar;
 import co.tinab.darchin.view.toolbox.TextViewLight;
 
@@ -102,6 +103,19 @@ public class TimeSelectionFragment extends Fragment implements View.OnClickListe
         view.findViewById(R.id.btn_back).setOnClickListener(this);
         view.findViewById(R.id.btn_choose).setOnClickListener(this);
         buildTabLayoutView();
+
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.setOnKeyListener( new View.OnKeyListener() {
+            @Override
+            public boolean onKey( View v, int keyCode, KeyEvent event ) {
+                if( keyCode == KeyEvent.KEYCODE_BACK ) {
+                    onBackPressed();
+                    return true;
+                }
+                return false;
+            }
+        } );
     }
 
     private void buildTabLayoutView(){
@@ -170,11 +184,17 @@ public class TimeSelectionFragment extends Fragment implements View.OnClickListe
         }
     }
 
+    private void onBackPressed(){
+        cart.setSelectedPeriod(null);
+        if (getActivity() != null) ((MainActivity)getActivity())
+                .popFragment(null,DeliveryTypeFragment.class.getName());
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_back:
-                if (getActivity() != null) getActivity().onBackPressed();
+                onBackPressed();
                 break;
 
             case R.id.btn_choose:

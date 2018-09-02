@@ -1,6 +1,7 @@
 package co.tinab.darchin.view.navigation_drawer;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import co.tinab.darchin.R;
-import co.tinab.darchin.view.toolbox.TextViewLight;
+import co.tinab.darchin.view.toolbox.TextViewNormal;
 
 /**
  * Created by ali.soleimani on 7/31/2017.
@@ -26,14 +27,15 @@ class NavDrawerAdapter extends RecyclerView.Adapter<NavDrawerAdapter.NavViewHold
         this.data = data;
     }
 
+    @NonNull
     @Override
-    public NavViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public NavViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_nav_drawer, parent, false);
         return new NavViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(NavViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NavViewHolder holder, int position) {
         NavDrawerModel current = data.get(position);
         holder.txtTitle.setText(current.getTitle());
         holder.imgTitle.setImageResource(current.getImgResID());
@@ -45,7 +47,7 @@ class NavDrawerAdapter extends RecyclerView.Adapter<NavDrawerAdapter.NavViewHold
     }
 
     class NavViewHolder extends RecyclerView.ViewHolder {
-        TextViewLight txtTitle;
+        TextViewNormal txtTitle;
         ImageView imgTitle;
         NavViewHolder(View itemView) {
             super(itemView);

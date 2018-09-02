@@ -297,7 +297,11 @@ public class DeliveryTypeFragment extends Fragment implements View.OnClickListen
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-            btnTime.setText(cart.getSelectedPeriod().getOrderTimeText(getContext()));
+            if (cart.getSelectedPeriod() != null) {
+                btnTime.setText(cart.getSelectedPeriod().getOrderTimeText(getContext()));
+            }else {
+                btnTime.setText(R.string.choose_time);
+            }
         }
     }
 }

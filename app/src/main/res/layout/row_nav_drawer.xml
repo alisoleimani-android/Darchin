@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="ContentDescription" />
-    <co.tinab.darchin.view.toolbox.TextViewLight
+    <co.tinab.darchin.view.toolbox.TextViewNormal
         android:id="@+id/txt_title"
         android:layout_toEndOf="@id/img_title"
         android:layout_centerVertical="true"

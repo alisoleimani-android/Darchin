@@ -69,15 +69,17 @@
                 android:textSize="@dimen/semi_large"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/setting_btn_bk"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:minWidth="120dp"
-                android:minHeight="40dp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:minWidth="@dimen/_120sdp"
+                android:minHeight="@dimen/_35sdp"
                 android:padding="8dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:orientation="vertical">
                 <co.tinab.darchin.view.toolbox.TextViewNormal
                     android:layout_width="match_parent"
@@ -101,7 +103,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:orientation="vertical">
                 <co.tinab.darchin.view.toolbox.TextViewNormal
                     android:layout_width="match_parent"
