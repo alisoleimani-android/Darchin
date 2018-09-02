@@ -36,6 +36,7 @@ public class DrawerFragment extends Fragment {
             R.string.nav_item_charge_account,
             R.string.nav_item_share,
             R.string.nav_item_store_suggestion,
+            R.string.services_packages,
             R.string.nav_item_support
     };
     private final int[] imgArray = {
@@ -46,6 +47,7 @@ public class DrawerFragment extends Fragment {
             R.drawable.ic_credit_24dp,
             R.drawable.ic_gift_credit_24dp,
             R.drawable.ic_store_24dp,
+            R.drawable.ic_services_24dp,
             R.drawable.ic_support_24dp
     };
 

@@ -29,6 +29,7 @@ import co.tinab.darchin.R;
 import co.tinab.darchin.controller.activity.MainActivity;
 import co.tinab.darchin.controller.fragment.authentication.LoginOrRegisterFragment;
 import co.tinab.darchin.controller.fragment.other.AppIntroFragment;
+import co.tinab.darchin.controller.fragment.other.ServicesFragment;
 import co.tinab.darchin.controller.fragment.other.SupportFragment;
 import co.tinab.darchin.controller.fragment.search.SearchFragment;
 import co.tinab.darchin.controller.fragment.store.StoreFragment;
@@ -247,7 +248,12 @@ public class MainFragment extends BaseFragment implements DrawerFragment.Fragmen
                         .pushFragment(StoreSuggestionFragment.newInstance());
                 break;
 
-            case 6: // support
+            case 6: // package services
+                if (getActivity() != null) ((MainActivity)getActivity())
+                        .pushFragment(ServicesFragment.newInstance());
+                break;
+
+            case 7: // support
                 if (Setting.getSettings(getContext()).isEmpty()) {
                     getSettings(true);
                 }else {

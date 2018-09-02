@@ -88,13 +88,12 @@ public class SectionView extends LinearLayoutCompat {
 
     // building view after getting section list
     public void bind(final List<Section> sectionList){
-        if (listener != null) listener.onRequestCompleted();
-
         // clear container if messed up before
         if (getChildCount() > 0) removeAllViews();
 
         // bind sections
         if (!sectionList.isEmpty()) {
+            if (listener != null) listener.onRequestCompleted();
             setVisibility(VISIBLE);
 
             // iterate sections
@@ -110,6 +109,7 @@ public class SectionView extends LinearLayoutCompat {
                 },300 * i);
             }
         }else {
+            if (listener != null) listener.onRequestFailed();
             setVisibility(INVISIBLE);
         }
     }
