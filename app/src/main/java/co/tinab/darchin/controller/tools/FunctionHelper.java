@@ -12,6 +12,7 @@ import java.util.List;
 import co.tinab.darchin.R;
 import co.tinab.darchin.controller.activity.MainActivity;
 import co.tinab.darchin.controller.fragment.MainFragment;
+import co.tinab.darchin.controller.fragment.other.ServicesFragment;
 import co.tinab.darchin.controller.fragment.other.SupportFragment;
 import co.tinab.darchin.controller.fragment.other.WebViewFragment;
 import co.tinab.darchin.controller.fragment.store.StoreSuggestionFragment;
@@ -81,46 +82,56 @@ public class FunctionHelper {
         if (context != null && context instanceof MainActivity) {
             MainActivity mainActivity = (MainActivity) context;
 
-            if (linkType.equals("web")) {
-                if (isConnected(context)) mainActivity.pushFragment(
-                        WebViewFragment.newInstance(link.concat("?hide"),name));
-            }
-
-            if (linkType.equals("page")) {
-                switch (link){
-                    case "home":
-                        mainActivity.pushFragment(MainFragment.newInstance());
-                        break;
-
-                    case "charge":
-                        mainActivity.pushFragment(CreditFragment.newInstance());
-                        break;
-
-                    case "invite":
-                        mainActivity.pushFragment(FreeCreditFragment.newInstance());
-                        break;
-
-                    case "suggest":
-                        mainActivity.pushFragment(StoreSuggestionFragment.newInstance());
-                        break;
-
-                    case "orders":
-                        mainActivity.pushFragment(ProfileFragment.newInstance(ProfileFragment.ORDER_PAGE));
-                        break;
-
-                    case "favorite":
-                        mainActivity.pushFragment(ProfileFragment.newInstance(ProfileFragment.FAVORITE_PAGE));
-                        break;
-
-                    case "settings":
-                        mainActivity.pushFragment(ProfileFragment.newInstance(ProfileFragment.SETTING_PAGE));
-                        break;
-
-                    case "support":
-                        mainActivity.pushFragment(SupportFragment.newInstance());
-                        break;
-
+            switch (linkType){
+                case "web":{
+                    if (isConnected(context)) mainActivity.pushFragment(
+                            WebViewFragment.newInstance(link.concat("?hide"),name));
                 }
+                break;
+
+                case "page":
+                    switch (link){
+                        case "home":
+                            mainActivity.pushFragment(MainFragment.newInstance());
+                            break;
+
+                        case "charge":
+                            mainActivity.pushFragment(CreditFragment.newInstance());
+                            break;
+
+                        case "invite":
+                            mainActivity.pushFragment(FreeCreditFragment.newInstance());
+                            break;
+
+                        case "suggest":
+                            mainActivity.pushFragment(StoreSuggestionFragment.newInstance());
+                            break;
+
+                        case "orders":
+                            mainActivity.pushFragment(ProfileFragment.newInstance(ProfileFragment.ORDER_PAGE));
+                            break;
+
+                        case "favorite":
+                            mainActivity.pushFragment(ProfileFragment.newInstance(ProfileFragment.FAVORITE_PAGE));
+                            break;
+
+                        case "settings":
+                            mainActivity.pushFragment(ProfileFragment.newInstance(ProfileFragment.SETTING_PAGE));
+                            break;
+
+                        case "support":
+                            mainActivity.pushFragment(SupportFragment.newInstance());
+                            break;
+
+                        case "services":
+                            mainActivity.pushFragment(ServicesFragment.newInstance());
+                            break;
+                    }
+                    break;
+
+                case "store":
+                    mainActivity.openStoreFragment(Integer.parseInt(link));
+                    break;
             }
         }
     }

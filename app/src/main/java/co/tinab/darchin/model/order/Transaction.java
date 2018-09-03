@@ -43,7 +43,7 @@ public class Transaction {
             return string;
         }else {
             switch (type){
-                case "charge":
+                case "credit":
                     string = context.getString(R.string.transaction_type_charge);
                     break;
 
@@ -62,6 +62,18 @@ public class Transaction {
                 case "order_credit":
                     string = context.getString(R.string.transaction_type_order_charge);
                     break;
+
+                case "credit_referral":
+                    string = context.getString(R.string.transaction_type_credit_referral);
+                    break;
+
+                case "transfer_credit_increment":
+                    string = context.getString(R.string.transaction_type_transfer_credit_increment);
+                    break;
+
+                case "transfer_credit_decrement":
+                    string = context.getString(R.string.transaction_type_transfer_credit_decrement);
+                    break;
             }
             return string;
         }
@@ -73,7 +85,7 @@ public class Transaction {
             return resId;
         }else {
             switch (type){
-                case "charge":
+                case "credit":
                     resId = ContextCompat.getColor(context,R.color.success);
                     break;
 
@@ -90,6 +102,18 @@ public class Transaction {
                     break;
 
                 case "order_credit":
+                    resId = ContextCompat.getColor(context,R.color.failure);
+                    break;
+
+                case "credit_referral":
+                    resId = ContextCompat.getColor(context,R.color.success);
+                    break;
+
+                case "transfer_credit_increment":
+                    resId = ContextCompat.getColor(context,R.color.success);
+                    break;
+
+                case "transfer_credit_decrement":
                     resId = ContextCompat.getColor(context,R.color.failure);
                     break;
             }

@@ -153,6 +153,11 @@ public class SectionView extends LinearLayoutCompat {
                     addView(callToActionSectionView.getView());
                     callToActionSectionView.requestData(section);
                     break;
+
+                default:
+                    DefaultSectionView defaultSectionView = new DefaultSectionView(SectionView.this);
+                    addView(defaultSectionView.getView());
+                    break;
             }
         }
     }

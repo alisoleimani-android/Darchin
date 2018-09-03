@@ -139,9 +139,15 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
                     swipeRefreshLayout.setRefreshing(false);
                     loadingView.hide();
 
-                    OrderCollectionResource resource = response.body();
-                    if (FunctionHelper.isSuccess(getView(), resource) && resource.getOrders() != null) {
-                        bind(resource.getOrders());
+                    final OrderCollectionResource resource = response.body();
+                    if (resource != null && FunctionHelper.isSuccess(getView(), resource) && resource.getOrders() != null) {
+                        Runnable runnable = new Runnable() {
+                            @Override
+                            public void run() {
+                                bind(resource.getOrders());
+                            }
+                        };
+                        new Handler().postDelayed(runnable,300);
 
                     }else {
                         MySnackbar.make(getView(),MySnackbar.Failure,R.string.request_failed).show();
@@ -154,8 +160,8 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
                 if (isAdded()) {
                     swipeRefreshLayout.setRefreshing(false);
                     loadingView.hide();
+                    FunctionHelper.showMessages(getView(),messages);
                 }
-                FunctionHelper.showMessages(getView(),messages);
             }
 
             @Override

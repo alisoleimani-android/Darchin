@@ -265,4 +265,9 @@
     <string name="transfer_credit_question">آیا مطمئن هستید میخواهید مبلغ %1$s تومان به شماره همراه %2$s به نام %3$s انتقال دهید ؟</string>
     <string name="services_packages">بسته های خدماتی</string>
     <string name="no_services_defined">تاکنون بسته خدماتی تعریف نشده است</string>
+    <string name="transaction_type_credit_referral">افزایش اعتبار به دلیل دعوت دوست</string>
+    <string name="transaction_type_transfer_credit_increment">انتقال اعتبار از طرف کاربر دیگر</string>
+    <string name="transaction_type_transfer_credit_decrement">انتقال اعتبار به کاربر دیگر</string>
+    <string name="unknown_content">Update the app</string>
+    <string name="unknown_content_description">This content is not compatible with your current version of the app. Click here to update the program.</string>
 </resources>

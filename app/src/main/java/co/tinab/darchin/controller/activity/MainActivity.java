@@ -10,7 +10,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -21,11 +20,14 @@ import java.util.List;
 import co.tinab.darchin.Darchin;
 import co.tinab.darchin.R;
 import co.tinab.darchin.controller.fragment.MainFragment;
+import co.tinab.darchin.controller.fragment.store.StoreFragment;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.model.User;
 import co.tinab.darchin.model.network.MyCallback;
 import co.tinab.darchin.model.network.request_helpers.AuthRequestHelper;
+import co.tinab.darchin.model.network.request_helpers.StoreRequestHelper;
 import co.tinab.darchin.model.network.resources.BasicResource;
+import co.tinab.darchin.model.network.resources.StoreResource;
 import co.tinab.darchin.view.dialog.WaitingDialog;
 import co.tinab.darchin.view.toolbox.MySnackbar;
 import retrofit2.Response;
@@ -205,6 +207,41 @@ public class MainActivity extends BaseActivity {
                 exit();
             }
         }
+    }
+
+    public void openStoreFragment(int storeId){
+        final WaitingDialog waitingDialog = new WaitingDialog(this);
+        waitingDialog.show();
+
+        StoreRequestHelper requestHelper = StoreRequestHelper.getInstance();
+        requestHelper.getStore(storeId).enqueue(new MyCallback<StoreResource>() {
+            @Override
+            public void onRequestSuccess(Response<StoreResource> response) {
+                waitingDialog.dismiss();
+
+                StoreResource storeResource = response.body();
+                if (storeResource != null && FunctionHelper.isSuccess(findViewById(R.id.container_fragment)
+                        , storeResource) && storeResource.getStore() != null) {
+
+                    pushFragment(StoreFragment.newInstance(storeResource.getStore()));
+
+                }else {
+                    MySnackbar.make(findViewById(R.id.container_fragment),MySnackbar.Failure,R.string.request_failed).show();
+                }
+            }
+
+            @Override
+            public void onRequestFailed(@Nullable List<String> messages) {
+                waitingDialog.dismiss();
+                FunctionHelper.showMessages(findViewById(R.id.container_fragment),messages);
+            }
+
+            @Override
+            public void unAuthorizedDetected() {
+                waitingDialog.dismiss();
+                logout();
+            }
+        });
     }
 
     // logout user
