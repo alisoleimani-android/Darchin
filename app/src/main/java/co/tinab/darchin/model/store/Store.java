@@ -179,6 +179,7 @@ public class Store implements Parcelable{
     }
 
     public String getSlug() {
+        if (slug == null) return "";
         return slug;
     }
 

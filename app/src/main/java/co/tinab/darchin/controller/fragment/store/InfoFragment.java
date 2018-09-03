@@ -30,7 +30,9 @@ import net.cachapa.expandablelayout.ExpandableLayout;
 import co.tinab.darchin.R;
 import co.tinab.darchin.controller.fragment.other.MySupportMapFragment;
 import co.tinab.darchin.controller.tools.Display;
+import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.controller.tools.MyDateTime;
+import co.tinab.darchin.model.User;
 import co.tinab.darchin.model.store.Store;
 import co.tinab.darchin.view.component.SectionView;
 import co.tinab.darchin.view.toolbox.MoneyTextView;
@@ -155,16 +157,12 @@ public class InfoFragment extends Fragment implements OnMapReadyCallback, Expand
         SectionView sectionView = view.findViewById(R.id.container_section);
         sectionView.setOnRequestCompleteListener(this);
 
-//        City city = User.getInstance(getContext()).getCity(getContext());
-//        if (city != null) {
-//            if (!city.getName().isEmpty()) {
-//                if (FunctionHelper.isConnected(getContext())) {
-//                    sectionView.requestData("support","top");
-//                }else {
-//                    sectionView.bind(User.getInstance(getContext()).getSections(getContext(),"support","top"));
-//                }
-//            }
-//        }
+        if (FunctionHelper.isConnected(getContext())) {
+            sectionView.requestData(store.getSlug(),"top");
+        }else {
+            sectionView.bind(User.getInstance(getContext())
+                    .getSections(getContext(),store.getSlug(),"top"));
+        }
     }
 
     @Override

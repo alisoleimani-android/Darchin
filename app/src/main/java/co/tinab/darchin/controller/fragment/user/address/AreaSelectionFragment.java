@@ -143,15 +143,10 @@ public class AreaSelectionFragment extends Fragment implements View.OnClickListe
         SectionView sectionView = view.findViewById(R.id.container_section);
         sectionView.setOnRequestCompleteListener(this);
 
-        City city = User.getInstance(getContext()).getCity(getContext());
-        if (city != null) {
-            if (!city.getName().isEmpty()) {
-                if (FunctionHelper.isConnected(getContext())) {
-                    sectionView.requestData("area","top");
-                }else {
-                    sectionView.bind(User.getInstance(getContext()).getSections(getContext(),"area","top"));
-                }
-            }
+        if (FunctionHelper.isConnected(getContext())) {
+            sectionView.requestData("area","top");
+        }else {
+            sectionView.bind(User.getInstance(getContext()).getSections(getContext(),"area","top"));
         }
     }
 

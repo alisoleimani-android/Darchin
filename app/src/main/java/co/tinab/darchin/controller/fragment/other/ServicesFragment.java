@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import co.tinab.darchin.R;
+import co.tinab.darchin.controller.tools.FunctionHelper;
+import co.tinab.darchin.model.User;
 import co.tinab.darchin.view.component.EmptyView;
 import co.tinab.darchin.view.component.LoadingView;
 import co.tinab.darchin.view.component.SectionView;
@@ -50,7 +52,11 @@ public class ServicesFragment extends Fragment implements View.OnClickListener, 
 
         SectionView sectionView = view.findViewById(R.id.container_section);
         sectionView.setOnRequestCompleteListener(this);
-        sectionView.requestData("services","top");
+        if (FunctionHelper.isConnected(getContext())) {
+            sectionView.requestData("services","top");
+        }else {
+            sectionView.bind(User.getInstance(getContext()).getSections(getContext(),"services","top"));
+        }
     }
 
     @Override

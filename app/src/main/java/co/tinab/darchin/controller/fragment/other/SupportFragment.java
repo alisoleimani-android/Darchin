@@ -22,7 +22,6 @@ import co.tinab.darchin.R;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.model.Setting;
 import co.tinab.darchin.model.User;
-import co.tinab.darchin.model.address.City;
 import co.tinab.darchin.view.component.SectionView;
 import co.tinab.darchin.view.toolbox.TextViewLight;
 
@@ -73,15 +72,11 @@ public class SupportFragment extends Fragment implements View.OnClickListener, S
         if (address != null)
             ((TextViewLight)view.findViewById(R.id.txt_address)).setText(address);
 
-        City city = User.getInstance(getContext()).getCity(getContext());
-        if (city != null) {
-            if (!city.getName().isEmpty()) {
-                if (FunctionHelper.isConnected(getContext())) {
-                    sectionView.requestData("support","top");
-                }else {
-                    sectionView.bind(User.getInstance(getContext()).getSections(getContext(),"support","top"));
-                }
-            }
+        // get sections
+        if (FunctionHelper.isConnected(getContext())) {
+            sectionView.requestData("support","top");
+        }else {
+            sectionView.bind(User.getInstance(getContext()).getSections(getContext(),"support","top"));
         }
     }
 
