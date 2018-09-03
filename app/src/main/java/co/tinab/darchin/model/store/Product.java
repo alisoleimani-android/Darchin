@@ -121,6 +121,17 @@ public class Product implements Parcelable{
         }
     }
 
+    public String getMeduimImage(){
+        String name = null;
+        for (ProductItem item : items){
+            if (item.getImage() != null) {
+                name = item.getImage();
+                break;
+            }
+        }
+        return name;
+    }
+
     public List<ProductItem> getSelectedItems() {
         if (selectedItems == null) {
             return new ArrayList<>();

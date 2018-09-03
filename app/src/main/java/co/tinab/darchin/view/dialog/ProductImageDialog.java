@@ -51,7 +51,7 @@ public class ProductImageDialog extends DialogFragment {
 
         ImageView imageView = view.findViewById(R.id.img);
         Picasso.with(view.getContext())
-                .load(address.replace("small","large"))
+                .load(address)
                 .resize(Display.getWidthOfDevice(view.getContext()),0)
                 .into(imageView, new Callback() {
                     @Override

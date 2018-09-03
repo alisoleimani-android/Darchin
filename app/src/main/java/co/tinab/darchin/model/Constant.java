@@ -32,5 +32,7 @@ public class Constant {
     public static final String LOGO_PATH = DOMAIN.concat("uploads/logo/small/");
     public static final String COURIER_PATH = DOMAIN.concat("uploads/courier/small/");
     public static final String PRODUCT_THUMBNAIL_PATH = DOMAIN.concat("uploads/product/small/");
+    public static final String PRODUCT_MEDIUM_IMAGE_PATH = DOMAIN.concat("uploads/product/medium/");
     public static final String REFERRAL_LINK = DOMAIN.concat("referral/");
+    public static final String CafeBazaarLink = "https://cafebazaar.ir/app/co.tinab.darchin/?l=fa";
 }

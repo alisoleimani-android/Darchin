@@ -15,6 +15,7 @@ import java.util.List;
 import co.tinab.darchin.R;
 import co.tinab.darchin.controller.adapter.VerticalProductListAdapter;
 import co.tinab.darchin.controller.interfaces.ProductClickListener;
+import co.tinab.darchin.model.Constant;
 import co.tinab.darchin.model.store.Category;
 import co.tinab.darchin.model.store.Product;
 import co.tinab.darchin.model.store.ProductItem;
@@ -173,8 +174,11 @@ public class ProductsFragment extends Fragment implements ProductClickListener {
 
     @Override
     public void onProductImageTouchedDown(Product product) {
-        dialog = ProductImageDialog.newInstance(product.getPicture());
-        dialog.show(getChildFragmentManager(),"ProductImageDialog");
+        if (product.getMeduimImage() != null) {
+            dialog = ProductImageDialog.newInstance(
+                    Constant.PRODUCT_MEDIUM_IMAGE_PATH.concat(product.getMeduimImage()));
+            dialog.show(getChildFragmentManager(),"ProductImageDialog");
+        }
     }
 
     @Override

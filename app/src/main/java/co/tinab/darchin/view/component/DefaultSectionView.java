@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import co.tinab.darchin.R;
+import co.tinab.darchin.model.Constant;
 
 public class DefaultSectionView implements View.OnClickListener {
     private ViewGroup parent;
@@ -27,7 +28,7 @@ public class DefaultSectionView implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.container_info){
-            Uri uri = Uri.parse("");
+            Uri uri = Uri.parse(Constant.CafeBazaarLink);
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.addCategory(Intent.CATEGORY_BROWSABLE);
