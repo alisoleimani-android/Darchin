@@ -445,6 +445,9 @@ public class Store implements Parcelable{
                     periods.add(period);
                 }
             }
+            if (periods.size() > 1){
+                periods.remove(0);
+            }
             return periods;
         }
 
