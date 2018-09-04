@@ -100,7 +100,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         });
 
         MyRecyclerView recyclerViewComments = view.findViewById(R.id.recycler_view_comments);
-        commentListAdapter = new CommentListAdapter(commentList);
+        commentListAdapter = new CommentListAdapter();
         recyclerViewComments.setAdapter(commentListAdapter);
 
         new Handler().postDelayed(new Runnable() {

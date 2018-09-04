@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import co.tinab.darchin.R;
@@ -19,11 +20,7 @@ import co.tinab.darchin.view.toolbox.TextViewNormal;
  */
 
 public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.ViewHolder> {
-    private List<Comment> commentList;
-
-    public CommentListAdapter(List<Comment> commentList){
-        this.commentList = commentList;
-    }
+    private List<Comment> commentList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -35,6 +32,11 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(commentList.get(position));
+    }
+
+    public void setNewData(List<Comment> commentList){
+        this.commentList.addAll(commentList);
+        notifyDataSetChanged();
     }
 
     @Override

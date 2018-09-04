@@ -8,8 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 
-import co.tinab.darchin.controller.tools.WrapContentLinearLayoutManager;
 import co.tinab.darchin.R;
+import co.tinab.darchin.controller.tools.WrapContentLinearLayoutManager;
 
 /**
  * Created by A.S.R on 1/2/2018.
@@ -19,12 +19,6 @@ public class MyRecyclerView extends RecyclerView {
     String orientation = "vertical";
     boolean reverse,isNestedScrollingEnable = true;
     private WrapContentLinearLayoutManager layoutManager;
-
-    // for endless recycler view:
-    private int previousTotal = 0;
-    private boolean loading = true;
-    private int visibleThreshold = 5;
-    private int firstVisibleItem, visibleItemCount, totalItemCount;
 
     public MyRecyclerView(Context context) {
         this(context,null,0);
@@ -84,34 +78,8 @@ public class MyRecyclerView extends RecyclerView {
         setLayoutManager(layoutManager);
     }
 
-    public interface EndReachedListener {
-        void onEndReached();
-    }
-    public void setOnEndReachedListener(final EndReachedListener listener){
-        addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                visibleItemCount = recyclerView.getChildCount();
-                totalItemCount = layoutManager.getItemCount();
-                firstVisibleItem = layoutManager.findFirstVisibleItemPosition();
-
-                if (loading) {
-                    if (totalItemCount > previousTotal) {
-                        loading = false;
-                        previousTotal = totalItemCount;
-                    }
-                }
-                if (!loading && (totalItemCount - visibleItemCount)
-                        <= (firstVisibleItem + visibleThreshold)) {
-                    // End has been reached
-                    // Do something
-                    listener.onEndReached();
-
-                    loading = true;
-                }
-            }
-        });
+    @Override
+    public WrapContentLinearLayoutManager getLayoutManager() {
+        return layoutManager;
     }
 }

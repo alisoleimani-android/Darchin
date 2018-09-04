@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import co.tinab.darchin.R;
 import co.tinab.darchin.controller.activity.MainActivity;
 import co.tinab.darchin.controller.adapter.CityListAdapter;
+import co.tinab.darchin.controller.tools.EndlessRecyclerViewScrollListener;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.controller.tools.SimpleDividerItemDecoration;
 import co.tinab.darchin.model.address.City;
@@ -33,19 +35,12 @@ import retrofit2.Response;
  */
 
 public class CitySelectionDialog extends Dialog
-        implements View.OnClickListener, CityListAdapter.ItemSelectedListener, MyRecyclerView.EndReachedListener {
+        implements View.OnClickListener, CityListAdapter.ItemSelectedListener {
     private List<City> cityList = new ArrayList<>();
     private CityListAdapter adapter;
     private LoadingView loadingView;
     private City selectedCity = null;
     private BasicResource.Link link;
-
-    @Override
-    public void onEndReached() {
-        if (link != null && link.getNext() != null) {
-            getCities(link.getNext());
-        }
-    }
 
     public interface CitySelectionListener{
         void onCitySelected(City city);
@@ -76,7 +71,14 @@ public class CitySelectionDialog extends Dialog
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
         adapter.setOnItemSelectedListener(this);
-        recyclerView.setOnEndReachedListener(this);
+        recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(recyclerView.getLayoutManager()) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                if (link != null && link.getNext() != null) {
+                    getCities(link.getNext());
+                }
+            }
+        });
 
         new Handler().postDelayed(new Runnable() {
             @Override

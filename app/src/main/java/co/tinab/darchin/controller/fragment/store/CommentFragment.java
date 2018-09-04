@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +17,11 @@ import android.widget.RatingBar;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.tinab.darchin.R;
 import co.tinab.darchin.controller.activity.MainActivity;
 import co.tinab.darchin.controller.adapter.CommentListAdapter;
 import co.tinab.darchin.controller.tools.FunctionHelper;
+import co.tinab.darchin.controller.tools.NestedScrollListener;
 import co.tinab.darchin.model.network.MyCallback;
 import co.tinab.darchin.model.network.request_helpers.StoreRequestHelper;
 import co.tinab.darchin.model.network.resources.BasicResource;
@@ -25,7 +29,6 @@ import co.tinab.darchin.model.network.resources.CommentCollectionResource;
 import co.tinab.darchin.model.order.Comment;
 import co.tinab.darchin.model.store.Store;
 import co.tinab.darchin.model.store.Vote;
-import co.tinab.darchin.R;
 import co.tinab.darchin.view.component.LoadingView;
 import co.tinab.darchin.view.toolbox.MyRecyclerView;
 import co.tinab.darchin.view.toolbox.TextViewLight;
@@ -35,11 +38,11 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CommentFragment extends Fragment implements MyRecyclerView.EndReachedListener {
+public class CommentFragment extends Fragment {
     private Store store;
     private boolean isFragmentLoaded = false;
     private List<Comment> commentList = new ArrayList<>();
-    private CommentListAdapter commentListAdapter;
+    private CommentListAdapter commentListAdapter = new CommentListAdapter();
     private LoadingView loadingView;
     private BasicResource.Link link;
 
@@ -116,9 +119,18 @@ public class CommentFragment extends Fragment implements MyRecyclerView.EndReach
 
         // comments
         MyRecyclerView recyclerViewComment = view.findViewById(R.id.recycler_view);
-        commentListAdapter = new CommentListAdapter(commentList);
         recyclerViewComment.setAdapter(commentListAdapter);
-        recyclerViewComment.setOnEndReachedListener(this);
+
+        NestedScrollView nestedScrollView = view.findViewById(R.id.nested_scroll);
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollListener() {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                if (link != null && link.getNext() != null) {
+                    getComments(link.getNext());
+                }
+            }
+        });
+
     }
 
     @Override
@@ -167,15 +179,7 @@ public class CommentFragment extends Fragment implements MyRecyclerView.EndReach
 
     private void bindComments(List<Comment> commentList){
         if (isAdded() && this.commentList != null && commentListAdapter != null) {
-            this.commentList.addAll(commentList);
-            commentListAdapter.notifyDataSetChanged();
-        }
-    }
-
-    @Override
-    public void onEndReached() {
-        if (link != null && link.getNext() != null) {
-            getComments(link.getNext());
+            commentListAdapter.setNewData(commentList);
         }
     }
 }
