@@ -23,10 +23,10 @@ public abstract class NestedScrollListener implements NestedScrollView.OnScrollC
 
     @Override
     public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-        if (v.findViewById(R.id.recycler_view) != null) {
-            if ((scrollY >= (v.getChildAt(v.getChildCount() - 1).getMeasuredHeight() - v.getMeasuredHeight())) &&
+        MyRecyclerView recyclerView = v.findViewById(R.id.recycler_view);
+        if (recyclerView != null) {
+            if ((scrollY >= recyclerView.getMeasuredHeight() - v.getMeasuredHeight()) &&
                     scrollY > oldScrollY) {
-                MyRecyclerView recyclerView = v.findViewById(R.id.recycler_view);
                 LinearLayoutManager layoutManager = recyclerView.getLayoutManager();
 
                 int totalItemCount = layoutManager.getItemCount();
