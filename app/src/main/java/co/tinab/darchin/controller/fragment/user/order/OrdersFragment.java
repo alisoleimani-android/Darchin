@@ -7,7 +7,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ import co.tinab.darchin.controller.adapter.OrderListAdapter;
 import co.tinab.darchin.controller.fragment.store.StoreFragment;
 import co.tinab.darchin.controller.fragment.user.ProfileFragment;
 import co.tinab.darchin.controller.tools.FunctionHelper;
+import co.tinab.darchin.controller.tools.NestedScrollListener;
 import co.tinab.darchin.model.User;
 import co.tinab.darchin.model.address.City;
 import co.tinab.darchin.model.network.MyCallback;
@@ -51,6 +54,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean isFragmentLoaded = false,isFragmentLeaved = false;
     private SectionView sectionView;
+    private int totalItemsCount = 10;
 
     public static OrdersFragment newInstance(){
         return new OrdersFragment();
@@ -79,6 +83,15 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
         adapter.setOrderListAdapterListener(this);
         recyclerView.setAdapter(adapter);
 
+        NestedScrollView nestedScrollView = view.findViewById(R.id.nested_scroll);
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollListener(recyclerView) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                OrdersFragment.this.totalItemsCount += totalItemsCount;
+                getOrders(OrdersFragment.this.totalItemsCount);
+            }
+        });
+
         sectionView = view.findViewById(R.id.container_section);
         sectionView.setOnRequestCompleteListener(this);
 
@@ -95,7 +108,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
 
             // get orders
             loadingView.show();
-            getOrders();
+            getOrders(totalItemsCount);
         }
     }
 
@@ -109,7 +122,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
                 public void run() {
                     // get orders
                     loadingView.show();
-                    getOrders();
+                    getOrders(totalItemsCount);
 
                     // get sections
                     City city = User.getInstance(getContext()).getCity(getContext());
@@ -128,11 +141,11 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
         }
     }
 
-    private void getOrders(){
+    private void getOrders(int take){
         String token = User.getToken(getContext());
 
         OrderRequestHelper requestHelper = OrderRequestHelper.getInstance();
-        requestHelper.getOrders(token).enqueue(new MyCallback<OrderCollectionResource>() {
+        requestHelper.getOrders(token,take).enqueue(new MyCallback<OrderCollectionResource>() {
             @Override
             public void onRequestSuccess(Response<OrderCollectionResource> response) {
                 if (isAdded()) {
@@ -141,13 +154,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
 
                     final OrderCollectionResource resource = response.body();
                     if (resource != null && FunctionHelper.isSuccess(getView(), resource) && resource.getOrders() != null) {
-                        Runnable runnable = new Runnable() {
-                            @Override
-                            public void run() {
-                                bind(resource.getOrders());
-                            }
-                        };
-                        new Handler().postDelayed(runnable,300);
+                        bind(resource.getOrders());
 
                     }else {
                         MySnackbar.make(getView(),MySnackbar.Failure,R.string.request_failed).show();
@@ -239,7 +246,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
 
     @Override
     public void onRefresh() {
-        getOrders();
+        getOrders(totalItemsCount);
     }
 
     // open store:
@@ -289,7 +296,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
                 if (waitingDialog != null) waitingDialog.hide();
 
                 if (FunctionHelper.isSuccess(getView(), response.body())) {
-                    getOrders(); // update orders
+                    getOrders(totalItemsCount); // update orders
                     if (getParentFragment() instanceof ProfileFragment) {
                         ((ProfileFragment)getParentFragment()).getAccountInfo();
                     }

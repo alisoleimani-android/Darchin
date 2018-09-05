@@ -19,8 +19,12 @@ import retrofit2.http.Path;
  */
 
 public interface OrderInterface {
-    @GET("order")
-    Call<OrderCollectionResource> getOrders(@Header(Constant.Auth) String token);
+    @GET("order/take/{skip}/{take}")
+    Call<OrderCollectionResource> getOrders(
+            @Header(Constant.Auth) String token,
+            @Path("skip") String skip,
+            @Path("take") String take
+    );
 
     @POST("comment")
     Call<BasicResource> comment(@Header(Constant.Auth) String token, @Body RequestBody body);

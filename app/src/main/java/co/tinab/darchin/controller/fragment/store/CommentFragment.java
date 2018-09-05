@@ -122,7 +122,7 @@ public class CommentFragment extends Fragment {
         recyclerViewComment.setAdapter(commentListAdapter);
 
         NestedScrollView nestedScrollView = view.findViewById(R.id.nested_scroll);
-        nestedScrollView.setOnScrollChangeListener(new NestedScrollListener() {
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollListener(recyclerViewComment) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 if (link != null && link.getNext() != null) {

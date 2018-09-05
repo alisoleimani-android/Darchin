@@ -24,9 +24,9 @@ public class OrderRequestHelper {
         return new OrderRequestHelper();
     }
 
-    public Call<OrderCollectionResource> getOrders(String token){
+    public Call<OrderCollectionResource> getOrders(String token,int take){
         OrderInterface orderInterface = MyRetrofit.getRetrofitInstance().create(OrderInterface.class);
-        return orderInterface.getOrders(token);
+        return orderInterface.getOrders(token,"0",String.valueOf(take));
     }
 
     public Call<BasicResource> comment(String token,int orderId,String text,int productQuality

@@ -4,11 +4,9 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import co.tinab.darchin.R;
 import co.tinab.darchin.view.toolbox.MyRecyclerView;
 
 public abstract class NestedScrollListener implements NestedScrollView.OnScrollChangeListener {
-
     // The minimum amount of items to have below your current scroll position
     // before loading more.
     private int visibleThreshold = 5;
@@ -20,10 +18,14 @@ public abstract class NestedScrollListener implements NestedScrollView.OnScrollC
     private boolean loading = true;
     // Sets the starting page index
     private int startingPageIndex = 0;
+    private MyRecyclerView recyclerView;
+
+    public NestedScrollListener(MyRecyclerView recyclerView){
+        this.recyclerView = recyclerView;
+    }
 
     @Override
     public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-        MyRecyclerView recyclerView = v.findViewById(R.id.recycler_view);
         if (recyclerView != null) {
             if ((scrollY >= recyclerView.getMeasuredHeight() - v.getMeasuredHeight()) &&
                     scrollY > oldScrollY) {
