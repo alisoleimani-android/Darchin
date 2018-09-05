@@ -261,6 +261,10 @@
     <string name="transaction_type_credit_referral">Credit increment for invitation</string>
     <string name="transaction_type_transfer_credit_increment">Transferred by another user</string>
     <string name="transaction_type_transfer_credit_decrement">Transfer to a user</string>
-    <string name="unknown_content">نسخه جدید برنامه</string>
-    <string name="unknown_content_description">برای دیدن این محتوا ابتدا باید نسخه جدید برنامه را نصب کنید، لطفا اینجا را کلیک کنید.</string>
+    <string name="unknown_content">Update the app</string>
+    <string name="unknown_content_description">This content is not compatible with your current version of the app. Click here to update the program.</string>
+    <string name="transaction_type_package">Service Packages</string>
+    <string name="update">Update</string>
+    <string name="force_update">Your application needs to be updated, please click on the button below to update.</string>
+    <string name="opt_update_desc">A new version of the app has been released, Would you want to update?</string>
 </resources>

@@ -268,6 +268,10 @@
     <string name="transaction_type_credit_referral">افزایش اعتبار به دلیل دعوت دوست</string>
     <string name="transaction_type_transfer_credit_increment">انتقال اعتبار از طرف کاربر دیگر</string>
     <string name="transaction_type_transfer_credit_decrement">انتقال اعتبار به کاربر دیگر</string>
-    <string name="unknown_content">Update the app</string>
-    <string name="unknown_content_description">This content is not compatible with your current version of the app. Click here to update the program.</string>
+    <string name="unknown_content">نسخه جدید برنامه</string>
+    <string name="unknown_content_description">برای دیدن این محتوا ابتدا باید نسخه جدید برنامه را نصب کنید، لطفا اینجا را کلیک کنید.</string>
+    <string name="transaction_type_package">پکیج های خدماتی</string>
+    <string name="update">بروزرسانی</string>
+    <string name="force_update">برنامه شما نیاز به بروزرسانی دارد، لطفا از طریق لینک زیر اقدام کنید.</string>
+    <string name="opt_update_desc">نسخه جدیدی از برنامه منتشر شده است، آیا تمایل به بروزرسانی دارید؟</string>
 </resources>

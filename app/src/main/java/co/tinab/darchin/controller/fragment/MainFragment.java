@@ -2,10 +2,15 @@ package co.tinab.darchin.controller.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -22,8 +27,10 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import co.tinab.darchin.R;
 import co.tinab.darchin.controller.activity.MainActivity;
@@ -40,6 +47,7 @@ import co.tinab.darchin.controller.fragment.user.address.CitySelectionDialog;
 import co.tinab.darchin.controller.fragment.user.credit.CreditFragment;
 import co.tinab.darchin.controller.fragment.user.credit.FreeCreditFragment;
 import co.tinab.darchin.controller.tools.FunctionHelper;
+import co.tinab.darchin.model.Constant;
 import co.tinab.darchin.model.Favorite;
 import co.tinab.darchin.model.Setting;
 import co.tinab.darchin.model.User;
@@ -59,6 +67,8 @@ import co.tinab.darchin.view.component.EmptyView;
 import co.tinab.darchin.view.component.LoadingView;
 import co.tinab.darchin.view.component.SearchResultView;
 import co.tinab.darchin.view.component.SectionView;
+import co.tinab.darchin.view.dialog.ForceUpdateDialog;
+import co.tinab.darchin.view.dialog.QuestionDialog;
 import co.tinab.darchin.view.dialog.WaitingDialog;
 import co.tinab.darchin.view.navigation_drawer.DrawerFragment;
 import co.tinab.darchin.view.toolbox.EditTextLight;
@@ -274,9 +284,13 @@ public class MainFragment extends BaseFragment implements DrawerFragment.Fragmen
                 if (waitingDialog != null && gotoSupportPage) waitingDialog.dismiss();
 
                 SettingsResource resource = response.body();
-                if (FunctionHelper.isSuccess(getView(), resource) && resource.getSettings() != null) {
+                if (resource != null && FunctionHelper.isSuccess(getView(), resource)
+                        && resource.getSettings() != null) {
                     // save settings to db
                     Setting.setSettings(getContext(),resource.getSettings());
+
+                    // check app update when settings request has done
+                    checkAppUpdate();
 
                     // goto support page
                     if (getActivity() != null && gotoSupportPage) ((MainActivity)getActivity())
@@ -297,6 +311,81 @@ public class MainFragment extends BaseFragment implements DrawerFragment.Fragmen
                 if (getActivity() != null) ((MainActivity)getActivity()).logout();
             }
         });
+    }
+
+    private void checkAppUpdate(){
+        if (getContext() != null) {
+            try {
+                Map<String, String> map = new LinkedHashMap<>(Setting.getSettings(getContext()));
+                if (map.containsKey("last_stable_version") && map.containsKey("last_version")) {
+                    int lastVersion = Integer.parseInt(map.get("last_version"));
+                    int lastStableVersion = Integer.parseInt(map.get("last_stable_version"));
+
+                    PackageInfo pInfo = getContext().getPackageManager()
+                            .getPackageInfo(getContext().getPackageName(), 0);
+                    int versionCode = pInfo.versionCode;
+
+                    // version control
+                    if (versionCode < lastStableVersion) {
+                        openForceUpdateDialog();
+
+                    } else if (versionCode < lastVersion) {
+                        openOptUpdateDialog();
+
+                    }
+
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void openForceUpdateDialog(){
+        ForceUpdateDialog dialog = ForceUpdateDialog.newInstance();
+        dialog.setListener(new ForceUpdateDialog.ClickListener() {
+            @Override
+            public void onBtnClicked(DialogFragment dialog) {
+                Uri uri = Uri.parse(Constant.CafeBazaarLink);
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(uri);
+                if (getActivity() != null) getActivity().startActivity(intent);
+
+                // close dialog
+                dialog.dismiss();
+            }
+        });
+        dialog.show(getChildFragmentManager(),"ForceUpdateDialog");
+    }
+
+    private void openOptUpdateDialog(){
+        String desc = getString(R.string.opt_update_desc);
+        String yes = getString(R.string.yes);
+        String no = getString(R.string.no);
+
+        QuestionDialog dialog = QuestionDialog.newInstance(yes,no,desc);
+        dialog.setListener(new QuestionDialog.ClickListener() {
+            @Override
+            public void onPositiveBtnClicked(DialogFragment dialogFragment) {
+                Uri uri = Uri.parse(Constant.CafeBazaarLink);
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(uri);
+                if (getActivity() != null) getActivity().startActivity(intent);
+
+                // close dialog
+                dialogFragment.dismiss();
+            }
+
+            @Override
+            public void onNegativeBtnClicked(DialogFragment dialogFragment) {
+                dialogFragment.dismiss();
+            }
+        });
+        dialog.show(getChildFragmentManager(),"QuestionDialog");
     }
 
     private void setLogo(Toolbar toolbar){

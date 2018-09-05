@@ -74,6 +74,10 @@ public class Transaction {
                 case "transfer_credit_decrement":
                     string = context.getString(R.string.transaction_type_transfer_credit_decrement);
                     break;
+
+                case "package":
+                    string = context.getString(R.string.transaction_type_package);
+                    break;
             }
             return string;
         }
@@ -114,6 +118,10 @@ public class Transaction {
                     break;
 
                 case "transfer_credit_decrement":
+                    resId = ContextCompat.getColor(context,R.color.failure);
+                    break;
+
+                case "package":
                     resId = ContextCompat.getColor(context,R.color.failure);
                     break;
             }
