@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import co.ronash.pushe.Pushe;
 import co.tinab.darchin.controller.activity.MainActivity;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.model.network.MyCallback;
@@ -167,6 +168,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
+                    // send Pushe Tags:
+                    Pushe.subscribe(getContext(), String.valueOf(User.getInstance(getContext()).getUserID()));
+                    Pushe.subscribe(getContext(), User.getInstance(getContext()).getUsername());
 
                     // move to verification
                     if (getActivity() != null) ((MainActivity)getActivity()).pushFragment(VerificationFragment.newInstance(

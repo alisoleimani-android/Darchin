@@ -19,13 +19,14 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import co.ronash.pushe.Pushe;
+import co.tinab.darchin.R;
 import co.tinab.darchin.controller.activity.MainActivity;
 import co.tinab.darchin.controller.tools.FunctionHelper;
+import co.tinab.darchin.model.User;
 import co.tinab.darchin.model.network.MyCallback;
 import co.tinab.darchin.model.network.request_helpers.AuthRequestHelper;
 import co.tinab.darchin.model.network.resources.UserResource;
-import co.tinab.darchin.model.User;
-import co.tinab.darchin.R;
 import co.tinab.darchin.view.dialog.WaitingDialog;
 import co.tinab.darchin.view.toolbox.EditTextLight;
 import co.tinab.darchin.view.toolbox.MySnackbar;
@@ -155,6 +156,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
+                    // send Pushe Tags:
+                    Pushe.subscribe(getContext(), String.valueOf(User.getInstance(getContext()).getUserID()));
+                    Pushe.subscribe(getContext(), User.getInstance(getContext()).getUsername());
 
                     // user should active the account
                     if (userResponse.getUser().getStatus().equals("deactive")) {

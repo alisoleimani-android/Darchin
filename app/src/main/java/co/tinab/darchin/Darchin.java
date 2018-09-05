@@ -10,6 +10,7 @@ import com.jakewharton.picasso.OkHttp3Downloader;
 import com.onesignal.OneSignal;
 import com.squareup.picasso.Picasso;
 
+import co.ronash.pushe.Pushe;
 import co.tinab.darchin.controller.tools.PicassoClientBuilder;
 
 /**
@@ -40,6 +41,9 @@ public class Darchin extends Application {
                 .init();
         // clear notification shade
         OneSignal.clearOneSignalNotifications();
+
+        // Pushe notification
+        Pushe.initialize(getApplicationContext(),false);
     }
 
     private void picassoBuilder(){

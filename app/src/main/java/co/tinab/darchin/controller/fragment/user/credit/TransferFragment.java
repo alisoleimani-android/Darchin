@@ -94,6 +94,7 @@ public class TransferFragment extends Fragment implements View.OnClickListener, 
                     @Override
                     public void onPositiveBtnClicked(DialogFragment dialogFragment) {
                         // request to transfer credit
+                        dialogFragment.dismiss();
                         transfer();
                     }
 

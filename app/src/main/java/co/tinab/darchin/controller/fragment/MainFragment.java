@@ -355,6 +355,9 @@ public class MainFragment extends BaseFragment implements DrawerFragment.Fragmen
 
                 // close dialog
                 dialog.dismiss();
+
+                // close the app
+                if (getActivity() != null) getActivity().finish();
             }
         });
         dialog.show(getChildFragmentManager(),"ForceUpdateDialog");
