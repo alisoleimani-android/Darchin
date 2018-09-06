@@ -89,6 +89,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
         nestedScrollView.setOnScrollChangeListener(new NestedScrollListener(recyclerView) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                horizontalLoadingView.show();
                 OrdersFragment.this.totalItemsCount += totalItemsCount;
                 getOrders(OrdersFragment.this.totalItemsCount);
             }

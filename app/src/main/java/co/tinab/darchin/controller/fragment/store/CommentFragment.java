@@ -129,8 +129,8 @@ public class CommentFragment extends Fragment {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 if (link != null && link.getNext() != null) {
-                    getComments(link.getNext());
                     horizontalLoadingView.show();
+                    getComments(link.getNext());
                 }
             }
         });
