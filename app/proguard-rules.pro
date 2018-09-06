@@ -21,7 +21,7 @@
 #-renamesourcefileattribute SourceFile
 -dontwarn okio.**
 -dontwarn com.squareup.okhttp.**
--keep public class android.support.v7.widget.** { *; }
+-keep class android.support.v7.widget.** { *; }
 -keep public class android.support.v7.internal.widget.** { *; }
 -keep public class android.support.v7.internal.view.subMenu.** { *; }
 -keep public class * extends android.support.v4.view.ActionProvider {

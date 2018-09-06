@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -95,16 +94,13 @@ public class DrawerFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        MyRecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-
         // init views:
         txtName = view.findViewById(R.id.txt_name);
         txtCredit = view.findViewById(R.id.txt_money);
         containerCredit = view.findViewById(R.id.container_credit);
 
+        MyRecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         adapter = new NavDrawerAdapter(getActivity(),list);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -112,6 +108,7 @@ public class DrawerFragment extends Fragment {
                 mDrawerLayout.closeDrawer(containerView);
             }
         });
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
