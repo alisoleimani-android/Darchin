@@ -34,6 +34,7 @@ import co.tinab.darchin.model.network.resources.OrderCollectionResource;
 import co.tinab.darchin.model.network.resources.StoreResource;
 import co.tinab.darchin.model.order.Order;
 import co.tinab.darchin.view.component.EmptyView;
+import co.tinab.darchin.view.component.HorizontalLoadingView;
 import co.tinab.darchin.view.component.LoadingView;
 import co.tinab.darchin.view.component.SectionView;
 import co.tinab.darchin.view.dialog.QuestionDialog;
@@ -55,6 +56,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
     private boolean isFragmentLoaded = false,isFragmentLeaved = false;
     private SectionView sectionView;
     private int totalItemsCount = 10;
+    private HorizontalLoadingView horizontalLoadingView;
 
     public static OrdersFragment newInstance(){
         return new OrdersFragment();
@@ -97,6 +99,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
 
         emptyView = view.findViewById(R.id.empty_view);
         loadingView = view.findViewById(R.id.loading_view);
+        horizontalLoadingView = view.findViewById(R.id.horizontal_loading);
         if (getContext() != null) waitingDialog = new WaitingDialog(getContext());
     }
 
@@ -151,6 +154,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
                 if (isAdded()) {
                     swipeRefreshLayout.setRefreshing(false);
                     loadingView.hide();
+                    horizontalLoadingView.hide();
 
                     final OrderCollectionResource resource = response.body();
                     if (resource != null && FunctionHelper.isSuccess(getView(), resource) && resource.getOrders() != null) {
@@ -167,6 +171,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
                 if (isAdded()) {
                     swipeRefreshLayout.setRefreshing(false);
                     loadingView.hide();
+                    horizontalLoadingView.hide();
                     FunctionHelper.showMessages(getView(),messages);
                 }
             }
@@ -176,6 +181,7 @@ public class OrdersFragment extends Fragment implements OrderListAdapter.Listene
                 if (isAdded()) {
                     swipeRefreshLayout.setRefreshing(false);
                     loadingView.hide();
+                    horizontalLoadingView.hide();
                 }
                 if (getActivity() != null) ((MainActivity)getActivity()).logout();
             }

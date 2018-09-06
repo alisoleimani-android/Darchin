@@ -29,6 +29,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:isNestedScrollingEnable="false"/>
+                <co.tinab.darchin.view.component.HorizontalLoadingView
+                    android:id="@+id/horizontal_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/recycler_view"
+                    android:visibility="gone"/>
             </RelativeLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>

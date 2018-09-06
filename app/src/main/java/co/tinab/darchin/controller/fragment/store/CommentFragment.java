@@ -29,6 +29,7 @@ import co.tinab.darchin.model.network.resources.CommentCollectionResource;
 import co.tinab.darchin.model.order.Comment;
 import co.tinab.darchin.model.store.Store;
 import co.tinab.darchin.model.store.Vote;
+import co.tinab.darchin.view.component.HorizontalLoadingView;
 import co.tinab.darchin.view.component.LoadingView;
 import co.tinab.darchin.view.toolbox.MyRecyclerView;
 import co.tinab.darchin.view.toolbox.TextViewLight;
@@ -45,6 +46,7 @@ public class CommentFragment extends Fragment {
     private CommentListAdapter commentListAdapter = new CommentListAdapter();
     private LoadingView loadingView;
     private BasicResource.Link link;
+    private HorizontalLoadingView horizontalLoadingView;
 
     public static CommentFragment newInstance(Store store){
         CommentFragment fragment = new CommentFragment();
@@ -76,6 +78,7 @@ public class CommentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         loadingView = view.findViewById(R.id.loading_view);
+        horizontalLoadingView = view.findViewById(R.id.horizontal_loading);
 
         Vote vote = store.getVote();
 
@@ -127,6 +130,7 @@ public class CommentFragment extends Fragment {
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 if (link != null && link.getNext() != null) {
                     getComments(link.getNext());
+                    horizontalLoadingView.show();
                 }
             }
         });
@@ -155,6 +159,7 @@ public class CommentFragment extends Fragment {
             @Override
             public void onRequestSuccess(Response<CommentCollectionResource> response) {
                 if (loadingView != null) loadingView.hide();
+                if (horizontalLoadingView != null) horizontalLoadingView.hide();
 
                 CommentCollectionResource resource = response.body();
                 if (FunctionHelper.isSuccess(getView(), resource) && resource.getComments() != null) {
@@ -166,12 +171,14 @@ public class CommentFragment extends Fragment {
 
             @Override
             public void onRequestFailed(@Nullable List<String> messages) {
-                loadingView.hide();
+                if (loadingView != null) loadingView.hide();
+                if (horizontalLoadingView != null) horizontalLoadingView.hide();
             }
 
             @Override
             public void unAuthorizedDetected() {
                 if (loadingView != null) loadingView.hide();
+                if (horizontalLoadingView != null) horizontalLoadingView.hide();
                 if (getActivity() != null) ((MainActivity)getActivity()).logout();
             }
         });

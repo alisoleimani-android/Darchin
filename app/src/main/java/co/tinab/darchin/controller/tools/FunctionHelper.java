@@ -17,8 +17,11 @@ import co.tinab.darchin.controller.fragment.other.SupportFragment;
 import co.tinab.darchin.controller.fragment.other.WebViewFragment;
 import co.tinab.darchin.controller.fragment.store.StoreSuggestionFragment;
 import co.tinab.darchin.controller.fragment.user.ProfileFragment;
+import co.tinab.darchin.controller.fragment.user.address.AddressFragment;
 import co.tinab.darchin.controller.fragment.user.credit.CreditFragment;
 import co.tinab.darchin.controller.fragment.user.credit.FreeCreditFragment;
+import co.tinab.darchin.controller.fragment.user.credit.GiftCodeFragment;
+import co.tinab.darchin.controller.fragment.user.credit.TransferFragment;
 import co.tinab.darchin.model.Constant;
 import co.tinab.darchin.model.network.resources.BasicResource;
 import co.tinab.darchin.view.toolbox.MySnackbar;
@@ -125,6 +128,18 @@ public class FunctionHelper {
 
                         case "services":
                             mainActivity.pushFragment(ServicesFragment.newInstance());
+                            break;
+
+                        case "transfer":
+                            mainActivity.pushFragment(TransferFragment.newInstance());
+                            break;
+
+                        case "gift":
+                            mainActivity.pushFragment(GiftCodeFragment.newInstance());
+                            break;
+
+                        case "address":
+                            mainActivity.pushFragment(AddressFragment.newInstance());
                             break;
                     }
                     break;
