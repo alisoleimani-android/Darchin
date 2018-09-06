@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,6 @@ import java.util.List;
 import co.tinab.darchin.R;
 import co.tinab.darchin.model.order.Comment;
 import co.tinab.darchin.view.toolbox.MyRecyclerView;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 
 /**
  * Created by A.S.R on 2/12/2018.
@@ -45,10 +44,8 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        private TextViewNormal txtName;
-        private TextViewLight txtDate,txtComment;
+        private TextView txtName,txtDate,txtComment,txtReply;
         private ViewGroup containerReply;
-        private TextViewLight txtReply;
         private MyRecyclerView recyclerView;
         private View row;
 

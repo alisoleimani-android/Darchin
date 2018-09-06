@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="4dp">
-    <co.tinab.darchin.view.toolbox.TextViewLight
+    <co.tinab.darchin.view.toolbox.TextViewNormal
         android:id="@+id/txt_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         android:layout_toStartOf="@id/txt_price"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"/>
-    <co.tinab.darchin.view.toolbox.TextViewLight
+    <co.tinab.darchin.view.toolbox.TextViewNormal
         android:id="@+id/txt_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

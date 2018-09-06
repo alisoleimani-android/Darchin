@@ -6,6 +6,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -14,12 +15,10 @@ import com.google.gson.JsonElement;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.tinab.darchin.R;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.model.section.Notification;
 import co.tinab.darchin.model.section.Section;
-import co.tinab.darchin.R;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 
 /**
  * Created by A.S.R on 1/3/2018.
@@ -61,11 +60,8 @@ class NotificationSectionView {
 
     private void bind(final Notification notification){
         CardView containerInfo = view.findViewById(R.id.container_info);
-        TextViewLight txtDesc = view.findViewById(R.id.txt_desc);
-        TextViewNormal txtName = view.findViewById(R.id.txt_name);
-
-        txtName.setText(notification.getName());
-        txtDesc.setText(notification.getDescription());
+        TextView txtDesc = view.findViewById(R.id.txt_desc);
+        TextView txtName = view.findViewById(R.id.txt_name);
         containerInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +102,15 @@ class NotificationSectionView {
                 break;
         }
         containerInfo.setCardBackgroundColor(ContextCompat.getColor(parent.getContext(),resID));
-        txtName.setTextColor(ResourcesCompat.getColor(parent.getResources(),textColorId,null));
+
+        if (!notification.getName().trim().isEmpty()) {
+            txtName.setVisibility(View.VISIBLE);
+            txtName.setText(notification.getName());
+            txtName.setTextColor(ResourcesCompat.getColor(parent.getResources(),textColorId,null));
+        }else {
+            txtName.setVisibility(View.GONE);
+        }
+        txtDesc.setText(notification.getDescription());
         txtDesc.setTextColor(ResourcesCompat.getColor(parent.getResources(),textColorId,null));
     }
 }

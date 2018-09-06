@@ -13,12 +13,12 @@ import co.tinab.darchin.view.toolbox.TextViewNormal;
  * Created by A.S.R on 3/9/2018.
  */
 
-public class TextSectionView {
+public class TextDividerSectionView {
     private ViewGroup parent;
     private TextViewNormal txtTitle;
     private TextViewLight txtDesc;
 
-    TextSectionView(ViewGroup parent){
+    TextDividerSectionView(ViewGroup parent){
         this.parent = parent;
     }
 

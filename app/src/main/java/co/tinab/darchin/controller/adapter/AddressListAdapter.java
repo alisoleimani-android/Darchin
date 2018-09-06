@@ -5,13 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
-import co.tinab.darchin.model.address.Address;
 import co.tinab.darchin.R;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
+import co.tinab.darchin.model.address.Address;
 
 /**
  * Created by A.S.R on 2/19/2018.
@@ -42,8 +41,7 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        private TextViewNormal txtTag;
-        private TextViewLight txtAddress;
+        private TextView txtTag,txtAddress;
         private View row;
 
         private ViewHolder(View itemView) {

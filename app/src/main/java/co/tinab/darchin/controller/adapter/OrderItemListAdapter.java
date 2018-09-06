@@ -5,12 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
 import co.tinab.darchin.R;
 import co.tinab.darchin.model.order.OrderItem;
-import co.tinab.darchin.view.toolbox.TextViewLight;
 
 public class OrderItemListAdapter extends RecyclerView.Adapter<OrderItemListAdapter.ViewHolder> {
     private List<OrderItem> orderItems;
@@ -37,7 +37,7 @@ public class OrderItemListAdapter extends RecyclerView.Adapter<OrderItemListAdap
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        private TextViewLight txtName,txtPrice;
+        private TextView txtName,txtPrice;
 
         ViewHolder(View itemView) {
             super(itemView);

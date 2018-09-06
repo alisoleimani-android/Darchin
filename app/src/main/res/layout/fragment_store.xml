@@ -87,7 +87,7 @@
                         app:riv_mutate_background="true"
                         app:riv_oval="false"
                         app:riv_tile_mode="clamp" />
-                    <co.tinab.darchin.view.toolbox.TextViewNormal
+                    <co.tinab.darchin.view.toolbox.TextViewBold
                         android:id="@+id/txt_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

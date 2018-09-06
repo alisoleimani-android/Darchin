@@ -20,7 +20,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/container_end">
-            <co.tinab.darchin.view.toolbox.TextViewNormal
+            <co.tinab.darchin.view.toolbox.TextViewBold
                 android:id="@+id/txt_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

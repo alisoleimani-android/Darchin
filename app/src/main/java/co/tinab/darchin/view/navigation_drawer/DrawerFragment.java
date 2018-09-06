@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,6 @@ import co.tinab.darchin.controller.tools.ItemClickSupport;
 import co.tinab.darchin.model.User;
 import co.tinab.darchin.view.toolbox.MoneyTextView;
 import co.tinab.darchin.view.toolbox.MyRecyclerView;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 /**
  * Created by ali.soleimani on 7/31/2017.
  */
@@ -55,7 +55,7 @@ public class DrawerFragment extends Fragment {
     private View containerView;
     private ViewGroup containerCredit;
     private FragmentDrawerListener drawerListener;
-    private TextViewNormal txtName;
+    private TextView txtName;
     private MoneyTextView txtCredit;
 
     private List<NavDrawerModel> list = new ArrayList<>();

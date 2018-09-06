@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.NetworkPolicy;
@@ -15,8 +16,6 @@ import java.util.List;
 import co.tinab.darchin.R;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.model.store.Store;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 
 /**
  * Created by A.S.R on 1/7/2018.
@@ -47,8 +46,7 @@ public class VerticalStoreListAdapter extends RecyclerView.Adapter<VerticalStore
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextViewLight txtDesc;
-        TextViewNormal txtName,txtDiscount,txtScore;
+        TextView txtDesc,txtName,txtDiscount,txtScore;
         RoundedImageView imgRestaurant;
         View row;
         private ViewHolder(View itemView) {

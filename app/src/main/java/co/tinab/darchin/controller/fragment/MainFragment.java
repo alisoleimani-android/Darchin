@@ -73,7 +73,6 @@ import co.tinab.darchin.view.dialog.WaitingDialog;
 import co.tinab.darchin.view.navigation_drawer.DrawerFragment;
 import co.tinab.darchin.view.toolbox.EditTextLight;
 import co.tinab.darchin.view.toolbox.MySnackbar;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 import retrofit2.Response;
 
 /**
@@ -83,7 +82,7 @@ public class MainFragment extends BaseFragment implements DrawerFragment.Fragmen
     public DrawerFragment drawerFragment;
     private EditTextLight txtInputSearch;
     private SectionView sectionViewTop;
-    private TextViewNormal txtCity;
+    private TextView txtCity;
     private EmptyView emptyView;
     private LoadingView loadingView;
     private WaitingDialog waitingDialog;

@@ -3,6 +3,8 @@ package co.tinab.darchin.view.component;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -11,13 +13,10 @@ import com.google.gson.JsonElement;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.tinab.darchin.R;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.model.section.Action;
 import co.tinab.darchin.model.section.Section;
-import co.tinab.darchin.R;
-import co.tinab.darchin.view.toolbox.ButtonNormal;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 
 /**
  * Created by A.S.R on 3/8/2018.
@@ -62,16 +61,21 @@ public class CallToActionSectionView implements View.OnClickListener {
     private void bind(Action action){
         this.action = action;
 
-        TextViewNormal txtTitle = view.findViewById(R.id.txt_title);
-        TextViewLight txtDesc = view.findViewById(R.id.txt_desc);
-        ButtonNormal btnAction = view.findViewById(R.id.btn_action);
-
-        txtTitle.setText(action.getName());
-        txtDesc.setText(action.getDescription());
+        TextView txtTitle = view.findViewById(R.id.txt_title);
+        TextView txtDesc = view.findViewById(R.id.txt_desc);
+        Button btnAction = view.findViewById(R.id.btn_action);
 
         btnAction.setText(action.getButtonName());
         btnAction.setOnClickListener(this);
         btnAction.setBackground(action.getButtonBackground(parent.getContext()));
+
+        if (!action.getName().trim().isEmpty()) {
+            txtTitle.setVisibility(View.VISIBLE);
+            txtTitle.setText(action.getName());
+        }else {
+            txtTitle.setVisibility(View.GONE);
+        }
+        txtDesc.setText(action.getDescription());
 
     }
 

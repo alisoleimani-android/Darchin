@@ -7,13 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import java.util.List;
 
-import co.tinab.darchin.model.address.Address;
 import co.tinab.darchin.R;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
+import co.tinab.darchin.model.address.Address;
 
 /**
  * Created by A.S.R on 3/4/2018.
@@ -66,8 +65,7 @@ public class AddressSelectionListAdapter extends RecyclerView.Adapter<AddressSel
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private RadioButton btnRadio;
-        private TextViewLight txtAddress;
-        private TextViewNormal txtName;
+        private TextView txtAddress,txtName;
         private ImageButton btnEdit,btnDelete;
         private View row;
 

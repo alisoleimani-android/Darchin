@@ -229,7 +229,7 @@
     <string name="verification">Verification</string>
     <string name="yes">Yes</string>
     <string name="goto_home">Enter the App</string>
-    <string name="transaction_type_charge">Increase account</string>
+    <string name="transaction_type_charge">Increase credit</string>
     <string name="transaction_type_gift">Gift</string>
     <string name="transaction_type_order">Order</string>
     <string name="transaction_type_order_cancel">Order canceled</string>
@@ -257,7 +257,7 @@
     <string name="user_is_not_active">The user is not activated in Darchin</string>
     <string name="transfer_credit_question">Are you sure you want to transfer %1$s Tomans to %2$s number %3$s ?</string>
     <string name="services_packages">Service Packages</string>
-    <string name="no_services_defined">Ops!, There\'s no package yet</string>
+    <string name="no_services_defined">There\'s no package yet</string>
     <string name="transaction_type_credit_referral">Credit increment for invitation</string>
     <string name="transaction_type_transfer_credit_increment">Transferred by another user</string>
     <string name="transaction_type_transfer_credit_decrement">Transfer to a user</string>
@@ -267,4 +267,5 @@
     <string name="update">Update</string>
     <string name="force_update">Your application needs to be updated, please click on the button below to update.</string>
     <string name="opt_update_desc">A new version of the app has been released, Would you want to update?</string>
+    <string name="enter_the_amount_to_transfer">Please enter the amount to transfer</string>
 </resources>

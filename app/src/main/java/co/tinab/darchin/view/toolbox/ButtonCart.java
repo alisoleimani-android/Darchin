@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import co.tinab.darchin.R;
 
@@ -15,7 +16,7 @@ import co.tinab.darchin.R;
  */
 
 public class ButtonCart extends FrameLayout {
-    private TextViewNormal txtCount;
+    private TextView txtCount;
     private int count;
 
     public ButtonCart(@NonNull Context context) {

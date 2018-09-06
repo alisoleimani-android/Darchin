@@ -14,8 +14,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -34,10 +37,8 @@ import co.tinab.darchin.view.dialog.CartInfoModal;
 import co.tinab.darchin.view.dialog.QuestionDialog;
 import co.tinab.darchin.view.dialog.WaitingDialog;
 import co.tinab.darchin.view.toolbox.ButtonNormal;
-import co.tinab.darchin.view.toolbox.EditTextNormal;
 import co.tinab.darchin.view.toolbox.MoneyTextView;
 import co.tinab.darchin.view.toolbox.MySnackbar;
-import co.tinab.darchin.view.toolbox.TextViewLight;
 import retrofit2.Response;
 
 /**
@@ -48,9 +49,9 @@ public class DeliveryTypeFragment extends Fragment implements View.OnClickListen
     private int selectedID = -1;
     private Cart cart;
     private RadioButton btnIsDelivery,btnIsInside;
-    private ButtonNormal btnTime;
+    private Button btnTime;
     private MoneyTextView txtSumTotal;
-    private EditTextNormal txtInputCoupon;
+    private EditText txtInputCoupon;
 
     public static DeliveryTypeFragment newInstance(Cart cart){
         DeliveryTypeFragment fragment = new DeliveryTypeFragment();
@@ -84,7 +85,7 @@ public class DeliveryTypeFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        TextViewLight txtTitle = view.findViewById(R.id.txt_title);
+        TextView txtTitle = view.findViewById(R.id.txt_title);
         txtTitle.setText(getString(R.string.how_to_take_order));
 
         txtSumTotal = view.findViewById(R.id.txt_sum_total);

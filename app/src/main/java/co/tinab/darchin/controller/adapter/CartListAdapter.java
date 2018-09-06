@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -13,8 +14,6 @@ import co.tinab.darchin.R;
 import co.tinab.darchin.controller.interfaces.ProductItemClickListener;
 import co.tinab.darchin.model.store.ProductItem;
 import co.tinab.darchin.view.toolbox.MoneyTextView;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 
 /**
  * Created by A.S.R on 3/2/2018.
@@ -45,8 +44,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        private TextViewNormal txtName,txtCount;
-        private TextViewLight txtDesc;
+        private TextView txtName,txtCount,txtDesc;
         private ImageButton btnAdd;
         private ImageButton btnRemove;
         private MoneyTextView txtPrice,txtDiscount;

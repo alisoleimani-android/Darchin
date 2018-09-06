@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <co.tinab.darchin.view.toolbox.TextViewNormal
+        <co.tinab.darchin.view.toolbox.TextViewBold
             android:id="@+id/txt_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

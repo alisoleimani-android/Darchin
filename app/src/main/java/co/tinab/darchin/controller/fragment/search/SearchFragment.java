@@ -95,9 +95,9 @@ public class SearchFragment extends BaseFragment implements View.OnClickListener
         }
         if (getContext() != null) {
             if (Locale.getDefault().getLanguage().equals("fa")) {
-                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/Normal.ttf");
+                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/Bold.ttf");
             }else {
-                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/LatinNormal.ttf");
+                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/LatinBold.ttf");
             }
         }
     }

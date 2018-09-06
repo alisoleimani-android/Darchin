@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -14,6 +15,7 @@ import com.google.gson.JsonElement;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.tinab.darchin.R;
 import co.tinab.darchin.controller.activity.MainActivity;
 import co.tinab.darchin.controller.adapter.HorizontalProductListAdapter;
 import co.tinab.darchin.controller.adapter.HorizontalStoreListAdapter;
@@ -27,11 +29,9 @@ import co.tinab.darchin.model.network.resources.StoreResource;
 import co.tinab.darchin.model.section.Section;
 import co.tinab.darchin.model.store.Product;
 import co.tinab.darchin.model.store.Store;
-import co.tinab.darchin.R;
 import co.tinab.darchin.view.dialog.WaitingDialog;
 import co.tinab.darchin.view.toolbox.MyRecyclerView;
 import co.tinab.darchin.view.toolbox.MySnackbar;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 import retrofit2.Response;
 
 /**
@@ -42,7 +42,7 @@ class HorizontalListSectionView implements View.OnClickListener{
     private ViewGroup parent;
     private View view;
     private MyRecyclerView recyclerView;
-    private TextViewNormal txtTitle;
+    private TextView txtTitle;
     private ViewGroup btnShowAll;
     private Section section;
     private WaitingDialog waitingDialog;

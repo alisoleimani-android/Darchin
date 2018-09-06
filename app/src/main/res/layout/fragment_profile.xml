@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:minHeight="80dp"
         android:background="@color/colorSecondary">
-        <co.tinab.darchin.view.toolbox.TextViewNormal
+        <co.tinab.darchin.view.toolbox.TextViewBold
             android:id="@+id/txt_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

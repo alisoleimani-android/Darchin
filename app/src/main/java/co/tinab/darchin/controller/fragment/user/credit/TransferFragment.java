@@ -83,30 +83,39 @@ public class TransferFragment extends Fragment implements View.OnClickListener, 
                 break;
 
             case R.id.btn_transfer:
-                String yes = getString(R.string.yes);
-                String no = getString(R.string.no);
-                String amount = txtInputAmount.getText().toString();
-                String mobile = txtInputMobile.getText().toString();
-                String description = getString(R.string.transfer_credit_question,amount,mobile,name);
-
-                QuestionDialog dialog = QuestionDialog.newInstance(yes,no,description);
-                dialog.setListener(new QuestionDialog.ClickListener() {
-                    @Override
-                    public void onPositiveBtnClicked(DialogFragment dialogFragment) {
-                        // request to transfer credit
-                        dialogFragment.dismiss();
-                        transfer();
-                    }
-
-                    @Override
-                    public void onNegativeBtnClicked(DialogFragment dialogFragment) {
-                        dialogFragment.dismiss();
-                    }
-                });
-                dialog.show(getChildFragmentManager(),"QuestionDialog");
+                if (!txtInputAmount.getText().toString().trim().isEmpty()) {
+                    showQuestionDialog();
+                }else {
+                    MySnackbar.make(getView(),MySnackbar.Alert,R.string.enter_the_amount_to_transfer).show();
+                }
 
                 break;
         }
+    }
+
+    private void showQuestionDialog(){
+
+        String yes = getString(R.string.yes);
+        String no = getString(R.string.no);
+        String amount = txtInputAmount.getText().toString();
+        String mobile = txtInputMobile.getText().toString();
+        String description = getString(R.string.transfer_credit_question,amount,mobile,name);
+
+        QuestionDialog dialog = QuestionDialog.newInstance(yes,no,description);
+        dialog.setListener(new QuestionDialog.ClickListener() {
+            @Override
+            public void onPositiveBtnClicked(DialogFragment dialogFragment) {
+                // request to transfer credit
+                dialogFragment.dismiss();
+                transfer();
+            }
+
+            @Override
+            public void onNegativeBtnClicked(DialogFragment dialogFragment) {
+                dialogFragment.dismiss();
+            }
+        });
+        dialog.show(getChildFragmentManager(),"QuestionDialog");
     }
 
     @Override

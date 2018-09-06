@@ -55,8 +55,6 @@ import co.tinab.darchin.model.store.Store;
 import co.tinab.darchin.view.dialog.WaitingDialog;
 import co.tinab.darchin.view.toolbox.ButtonCart;
 import co.tinab.darchin.view.toolbox.MySnackbar;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 import klogi.com.RtlViewPager;
 import retrofit2.Response;
 
@@ -70,13 +68,12 @@ public class StoreFragment extends BaseFragment implements View.OnClickListener 
     private Toolbar toolbar;
     private Product product;
     public Store store;
-    private TextViewLight txtName;
+    private TextView txtName,txtOrderStatus;
     private Typeface font;
     private TabLayout tabLayout;
     private RtlViewPager viewPager;
     private ViewPagerAdapter adapter;
     private ImageButton btnFavorite;
-    private TextViewNormal txtOrderStatus;
     private View shapeOnline;
 
     private WaitingDialog waitingDialog;
@@ -112,9 +109,9 @@ public class StoreFragment extends BaseFragment implements View.OnClickListener 
         }
         if (getContext() != null) {
             if (Locale.getDefault().getLanguage().equals("fa")) {
-                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/Normal.ttf");
+                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/Bold.ttf");
             }else {
-                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/LatinNormal.ttf");
+                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/LatinBold.ttf");
             }
         }
     }
@@ -189,14 +186,14 @@ public class StoreFragment extends BaseFragment implements View.OnClickListener 
                     .into(imgLogo);
         }
 
-        TextViewNormal txtName = view.findViewById(R.id.txt_name);
+        TextView txtName = view.findViewById(R.id.txt_name);
         txtName.setText(store.getName());
 
-        TextViewNormal txtScore = view.findViewById(R.id.txt_score);
+        TextView txtScore = view.findViewById(R.id.txt_score);
         txtScore.setBackground(store.getVote().getScoreBackground(getContext()));
         txtScore.setText(store.getVote().getAverageString());
 
-        TextViewNormal txtDiscount = view.findViewById(R.id.txt_discount);
+        TextView txtDiscount = view.findViewById(R.id.txt_discount);
         if (store.hasDiscount()) {
             txtDiscount.setVisibility(View.VISIBLE);
             txtDiscount.setText(store.getDiscount());
@@ -205,7 +202,7 @@ public class StoreFragment extends BaseFragment implements View.OnClickListener 
         shapeOnline = view.findViewById(R.id.shape_circle);
         txtOrderStatus = view.findViewById(R.id.txt_status);
 
-        TextViewLight txtAddress = view.findViewById(R.id.txt_address);
+        TextView txtAddress = view.findViewById(R.id.txt_address);
         txtAddress.setText(store.getFullAddress(getContext()));
 
         if (getContext() != null) waitingDialog = new WaitingDialog(getContext());

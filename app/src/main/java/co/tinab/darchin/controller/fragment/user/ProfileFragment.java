@@ -33,8 +33,6 @@ import co.tinab.darchin.model.network.MyCallback;
 import co.tinab.darchin.model.network.request_helpers.AccountRequestHelper;
 import co.tinab.darchin.model.network.resources.UserResource;
 import co.tinab.darchin.view.toolbox.MoneyTextView;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 import klogi.com.RtlViewPager;
 import retrofit2.Response;
 
@@ -52,7 +50,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     public static final short SETTING_PAGE = 0;
 
     private MoneyTextView txtCredit;
-    private TextViewNormal txtName;
+    private TextView txtName;
 
     public static ProfileFragment newInstance(short pageSelectionIndex){
         ProfileFragment profileFragment = new ProfileFragment();
@@ -74,9 +72,9 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
         }
         if (getContext() != null) {
             if (Locale.getDefault().getLanguage().equals("fa")) {
-                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/Normal.ttf");
+                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/Bold.ttf");
             }else {
-                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/LatinNormal.ttf");
+                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/LatinBold.ttf");
             }
         }
     }
@@ -102,7 +100,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
         btnBack.setOnClickListener(this);
 
         // title
-        TextViewLight txtTitle = toolbar.findViewById(R.id.txt_title);
+        TextView txtTitle = toolbar.findViewById(R.id.txt_title);
         txtTitle.setText(R.string.nav_item_profile);
 
         // build tabs

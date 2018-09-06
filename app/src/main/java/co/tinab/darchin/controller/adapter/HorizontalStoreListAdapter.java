@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -15,8 +16,6 @@ import java.util.List;
 import co.tinab.darchin.R;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.model.store.Store;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 
 /**
  * Created by A.S.R on 1/2/2018.
@@ -48,8 +47,7 @@ public class HorizontalStoreListAdapter extends RecyclerView.Adapter<HorizontalS
 
     class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView imgLogo;
-        private TextViewNormal txtName,txtScore;
-        private TextViewLight txtAddress,txtDiscount;
+        private TextView txtName,txtScore,txtAddress,txtDiscount;
         private View row;
         private ViewHolder(View itemView) {
             super(itemView);

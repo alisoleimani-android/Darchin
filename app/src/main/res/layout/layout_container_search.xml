@@ -15,7 +15,7 @@
         android:background="@color/colorPrimary"
         android:weightSum="1"
         android:focusableInTouchMode="true">
-        <co.tinab.darchin.view.toolbox.TextViewNormal
+        <co.tinab.darchin.view.toolbox.TextViewBold
             android:id="@+id/txt_city"
             android:layout_weight="0.2"
             android:layout_width="0dp"

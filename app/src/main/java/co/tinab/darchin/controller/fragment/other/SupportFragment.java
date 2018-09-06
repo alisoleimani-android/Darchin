@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -23,7 +24,6 @@ import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.model.Setting;
 import co.tinab.darchin.model.User;
 import co.tinab.darchin.view.component.SectionView;
-import co.tinab.darchin.view.toolbox.TextViewLight;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,7 +54,7 @@ public class SupportFragment extends Fragment implements View.OnClickListener, S
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        ((TextViewLight)view.findViewById(R.id.txt_title)).setText(R.string.nav_item_support);
+        ((TextView) view.findViewById(R.id.txt_title)).setText(R.string.nav_item_support);
 
         view.findViewById(R.id.ic_telegram).setOnClickListener(this);
         view.findViewById(R.id.ic_instagram).setOnClickListener(this);
@@ -66,11 +66,11 @@ public class SupportFragment extends Fragment implements View.OnClickListener, S
 
         String aboutUs = map.get("about_us");
         if (aboutUs != null)
-            ((TextViewLight)view.findViewById(R.id.txt_about_us)).setText(aboutUs);
+            ((TextView)view.findViewById(R.id.txt_about_us)).setText(aboutUs);
 
         String address = map.get("address");
         if (address != null)
-            ((TextViewLight)view.findViewById(R.id.txt_address)).setText(address);
+            ((TextView)view.findViewById(R.id.txt_address)).setText(address);
 
         // get sections
         if (FunctionHelper.isConnected(getContext())) {

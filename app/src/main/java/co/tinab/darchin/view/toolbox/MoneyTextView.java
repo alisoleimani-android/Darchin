@@ -33,9 +33,9 @@ public class MoneyTextView extends android.support.v7.widget.AppCompatTextView {
 
     private void setFont(Context context){
         if (Locale.getDefault().getLanguage().equals("fa")) {
-            setTypeface(Typeface.createFromAsset(context.getAssets(),"fonts/Light.ttf"));
+            setTypeface(Typeface.createFromAsset(context.getAssets(),"fonts/Normal.ttf"));
         }else {
-            setTypeface(Typeface.createFromAsset(context.getAssets(),"fonts/LatinLight.ttf"));
+            setTypeface(Typeface.createFromAsset(context.getAssets(),"fonts/LatinNormal.ttf"));
         }
     }
 

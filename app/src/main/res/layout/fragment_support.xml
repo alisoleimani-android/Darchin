@@ -23,9 +23,8 @@
                 android:id="@+id/container_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:orientation="vertical"/>
-            <co.tinab.darchin.view.toolbox.TextViewNormal
+            <co.tinab.darchin.view.toolbox.TextViewBold
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/large"
@@ -81,7 +80,7 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:orientation="vertical">
-                <co.tinab.darchin.view.toolbox.TextViewNormal
+                <co.tinab.darchin.view.toolbox.TextViewBold
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/large"
@@ -107,7 +106,7 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:orientation="vertical">
-                <co.tinab.darchin.view.toolbox.TextViewNormal
+                <co.tinab.darchin.view.toolbox.TextViewBold
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/large"
