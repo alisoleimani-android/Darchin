@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:animateLayoutChanges="true"
     tools:context=".controller.fragment.other.ServicesFragment">
 
     <include
@@ -16,8 +17,7 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/MyScrollBar">
+        android:layout_height="match_parent">
 
         <co.tinab.darchin.view.component.SectionView
             android:id="@+id/container_section"

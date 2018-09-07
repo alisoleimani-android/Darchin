@@ -23,7 +23,7 @@
             android:textAlignment="gravity"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"/>
-        <co.tinab.darchin.view.toolbox.TextViewLight
+        <co.tinab.darchin.view.toolbox.TextViewNormal
             android:id="@+id/txt_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

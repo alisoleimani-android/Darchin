@@ -8,18 +8,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Switch;
 
 import java.util.List;
 
+import co.tinab.darchin.R;
 import co.tinab.darchin.controller.activity.MainActivity;
 import co.tinab.darchin.controller.tools.FunctionHelper;
 import co.tinab.darchin.model.network.MyCallback;
 import co.tinab.darchin.model.network.request_helpers.SuggestsRequestHelper;
 import co.tinab.darchin.model.network.resources.BasicResource;
-import co.tinab.darchin.R;
 import co.tinab.darchin.view.dialog.WaitingDialog;
-import co.tinab.darchin.view.toolbox.EditTextLight;
 import co.tinab.darchin.view.toolbox.MySnackbar;
 import co.tinab.darchin.view.toolbox.TextViewLight;
 import retrofit2.Response;
@@ -28,7 +28,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class StoreSuggestionFragment extends Fragment implements View.OnClickListener {
-    private EditTextLight txtInputStore,txtInputCity,txtInputAddress,txtInputPhone,txtInputName,txtInputMobile;
+    private EditText txtInputStore,txtInputCity,txtInputAddress,txtInputPhone,txtInputName,txtInputMobile;
     private Switch btnIsManager;
     private WaitingDialog waitingDialog;
 

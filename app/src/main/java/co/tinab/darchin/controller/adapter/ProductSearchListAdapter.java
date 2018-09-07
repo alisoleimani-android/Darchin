@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.NetworkPolicy;
@@ -21,8 +22,6 @@ import co.tinab.darchin.model.store.Product;
 import co.tinab.darchin.model.store.ProductItem;
 import co.tinab.darchin.view.toolbox.MoneyTextView;
 import co.tinab.darchin.view.toolbox.MyRecyclerView;
-import co.tinab.darchin.view.toolbox.TextViewLight;
-import co.tinab.darchin.view.toolbox.TextViewNormal;
 
 /**
  * Created by A.S.R on 1/8/2018.
@@ -78,9 +77,8 @@ public class ProductSearchListAdapter extends RecyclerView.Adapter<RecyclerView.
     }
 
     class MultiItemViewHolder extends RecyclerView.ViewHolder implements ProductItemClickListener {
-        TextViewLight txtDescription;
         RoundedImageView imgFood;
-        TextViewNormal txtName;
+        TextView txtName,txtDescription;
         MyRecyclerView recyclerView;
         List<ProductItem> items = new ArrayList<>();
         ProductItemsListAdapter adapter;
@@ -140,9 +138,8 @@ public class ProductSearchListAdapter extends RecyclerView.Adapter<RecyclerView.
     }
 
     class SingleItemViewHolder extends RecyclerView.ViewHolder {
-        private TextViewLight txtDescription;
         private RoundedImageView imgFood;
-        private TextViewNormal txtName;
+        private TextView txtName,txtDescription;
         private MoneyTextView txtPrice,txtDiscount;
         private ImageButton btnAdd;
         View row;

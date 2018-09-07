@@ -119,9 +119,9 @@ public class CategoryFragment extends Fragment {
         if (getContext() != null) {
             Typeface font;
             if (Locale.getDefault().getLanguage().equals("fa")) {
-                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/Light.ttf");
+                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/Normal.ttf");
             }else {
-                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/LatinLight.ttf");
+                font = Typeface.createFromAsset(getContext().getAssets(),"fonts/LatinNormal.ttf");
             }
 
             ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);

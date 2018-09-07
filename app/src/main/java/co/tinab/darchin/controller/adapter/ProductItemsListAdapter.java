@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -13,7 +14,6 @@ import co.tinab.darchin.R;
 import co.tinab.darchin.controller.interfaces.ProductItemClickListener;
 import co.tinab.darchin.model.store.ProductItem;
 import co.tinab.darchin.view.toolbox.MoneyTextView;
-import co.tinab.darchin.view.toolbox.TextViewLight;
 
 /**
  * Created by A.S.R on 4/6/2018.
@@ -44,8 +44,7 @@ public class ProductItemsListAdapter extends RecyclerView.Adapter<ProductItemsLi
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        private TextViewLight txtName;
-        private TextViewLight txtCount;
+        private TextView txtName,txtCount;
         private MoneyTextView txtPrice,txtDiscount;
         private ImageButton btnAdd,btnRemove;
 

@@ -158,33 +158,34 @@ public class AreaSelectionFragment extends Fragment implements View.OnClickListe
                 break;
 
             case R.id.btn_continue:
-                if (type == CREATE) {
-                    if (address.getAreaSearch() != null) {
-                        if (getActivity() != null) ((MainActivity)getActivity()).pushFragment(
-                                NewAddressFragment.newInstance(NewAddressFragment.CREATE,address),
-                                AddressFragment.class.getName(), 0);
-                    }else {
-                        MySnackbar.make(getView(),MySnackbar.Alert,R.string.please_select_an_area);
-                    }
-                }
+                if (address.getAreaSearch() != null) {
+                    if (getActivity() != null){
+                        MainActivity mainActivity = ((MainActivity)getActivity());
 
-                if (type == EDIT) {
-                    if (address.getAreaSearch() != null) {
-                        if (getActivity() != null) ((MainActivity)getActivity())
-                                .popFragment(null,EditAddressFragment.class.getName());
-                    }else {
-                        MySnackbar.make(getView(),MySnackbar.Alert,R.string.please_select_an_area);
-                    }
-                }
+                        switch (type){
+                            case CREATE:
+                                mainActivity.pushFragment(
+                                        NewAddressFragment.newInstance(NewAddressFragment.CREATE,address),
+                                        AddressFragment.class.getName(),
+                                        0
+                                );
+                                break;
 
-                if (type == CREATE_FROM_ORDERS) {
-                    if (address.getAreaSearch() != null) {
-                        if (getActivity() != null) ((MainActivity)getActivity()).pushFragment(
-                                NewAddressFragment.newInstance(NewAddressFragment.CREATE_FROM_ORDERS,address),
-                                AddressSelectionFragment.class.getName(),0);
-                    }else {
-                        MySnackbar.make(getView(),MySnackbar.Alert,R.string.please_select_an_area);
+                            case EDIT:
+                                mainActivity.popFragment(null,EditAddressFragment.class.getName());
+                                break;
+
+                            case CREATE_FROM_ORDERS:
+                                mainActivity.pushFragment(
+                                        NewAddressFragment.newInstance(NewAddressFragment.CREATE_FROM_ORDERS,address),
+                                        AddressSelectionFragment.class.getName(),
+                                        0
+                                );
+                                break;
+                        }
                     }
+                }else {
+                    MySnackbar.make(getView(),MySnackbar.Alert,R.string.please_select_an_area);
                 }
                 break;
 
